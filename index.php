@@ -1,9 +1,9 @@
 <?php
 
 	session_start();
-	include("db.php");
+	include("inc/db.php");
+	include("inc/top.php");
 	include("functions.php");
-	include("top.php");
 
 	$page = "home";
 	if (!empty($_GET['page'])){
@@ -15,4 +15,7 @@
 	}
 
 
-	include("bottom.php");
+
+
+
+	include("inc/bottom.php");

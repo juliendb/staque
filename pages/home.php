@@ -1,16 +1,49 @@
-<?php include("inc/top.php"); ?>
+	<header id="header">
+		<div id="access">
+			<div id="sign">
+				<a href="">s'inscrire</a>
+				<a href="">se connecter</a>
+				<a href="">se déconnecter</a>
+			</div>
 
-<body>
-	<img src="img/dffdfd.jpg" />
-	<div id="wrapper">
+			<form id="search">
+				<input type="text" value="search">
+			</form>
+		</div>
 
-	</div>
+		<nav id="menu">
+			<a href="">Questions</a>
+			<a href="">Mots-clés</a>
+			<a href="">Utilisateurs</a>
+			<a href="">Sans réponses</a>
+		</nav>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/jquery.min.js">\x3C/script>')</script>
-	<script>
+		<div id="askQuestion">
+			<label for="askQuestion">
+			<input type="button" value="Poser une question">
+		</div>
+	</header>
 
-	</script>
-	
-</body>
-</html>
+
+	<main class="container">
+		<section id="presentation">
+			<div id="hello"></div>
+		</section>
+
+		<section id="allQuestions">
+			<div class ="question">
+				<h1 class="titleQuestion">titre question</h1>
+				<div class="infosUser">
+					<img src="">
+					<p>date</p>
+					<p>userPseudo</p>
+					
+				</div>
+
+			</div>
+		</section>
+
+	</main>
+
+
+
