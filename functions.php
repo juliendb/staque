@@ -2,7 +2,13 @@
 
 	function home(){
 		//aller chercher les questions enbdd
-		$questions = getHomeQuestions();
+		//$questions = getHomeQuestions();
+		showPage();
+	}
+
+	function questions(){
+		//aller chercher les questions enbdd
+		//$questions = getHomeQuestions();
 		showPage();
 	}
 
@@ -12,10 +18,8 @@
 		showPage();
 	}
 
-	function services(){
-		
-		showPage();
-	}
+
+	// Fonctions include de pages
 
 	function showPage(){
 		global $page;

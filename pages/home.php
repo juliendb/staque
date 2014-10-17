@@ -1,49 +1,80 @@
-	<header id="header">
-		<div id="access">
-			<div id="sign">
-				<a href="">s'inscrire</a>
-				<a href="">se connecter</a>
-				<a href="">se déconnecter</a>
-			</div>
-
-			<form id="search">
-				<input type="text" value="search">
-			</form>
-		</div>
-
-		<nav id="menu">
-			<a href="">Questions</a>
-			<a href="">Mots-clés</a>
-			<a href="">Utilisateurs</a>
-			<a href="">Sans réponses</a>
-		</nav>
-
-		<div id="askQuestion">
-			<label for="askQuestion">
-			<input type="button" value="Poser une question">
-		</div>
-	</header>
-
-
 	<main class="container">
 		<section id="presentation">
 			<div id="hello"></div>
 		</section>
 
-		<section id="allQuestions">
-			<div class ="question">
-				<h1 class="titleQuestion">titre question</h1>
-				<div class="infosUser">
-					<img src="">
-					<p>date</p>
-					<p>userPseudo</p>
-					
+		<section id="allQuestions-mini">
+			<div class ="question-mini">
+				<div class="vote">
+					<a href="" class="goodVote"></a>
+					<a href="" class="badVote"></a>
 				</div>
 
+				<h1 class="titleQuestion">
+					<a href="">titre question</a>
+				</h1>
+
+				<div class="infosUser">
+					<p>crée le 16.10.14</p>
+					<p>modifié le 17.10.14</p>
+					<a href="">user Pseudo</a>
+					<p>5</p>
+				</div>
+
+				<div class="afficheTags">
+					<a href="">html</a>
+				</div>
 			</div>
+
+			<div class ="question-mini">
+				<div class="vote">
+					<a href="" class="goodVote"></a>
+					<a href="" class="badVote"></a>
+				</div>
+
+				<h1 class="titleQuestion">
+					<a href="">titre question</a>
+				</h1>
+
+				<div class="infosUser">
+					<p>crée le 16.10.14</p>
+					<p>modifié le 17.10.14</p>
+					<a href="">user Pseudo</a>
+					<p>5</p>
+				</div>
+
+				<div class="afficheTags">
+					<a href="">html</a>
+				</div>
+			</div>
+
+			<div class ="question-mini">
+				<div class="vote">
+					<a href="" class="goodVote"></a>
+					<a href="" class="badVote"></a>
+				</div>
+
+				<h1 class="titleQuestion">
+					<a href="">titre question</a>
+				</h1>
+
+				<div class="infosUser">
+					<p>crée le 16.10.14</p>
+					<p>modifié le 17.10.14</p>
+					<a href="">user Pseudo</a>
+					<p>5</p>
+				</div>
+
+				<div class="afficheTags">
+					<a href="">html</a>
+				</div>
+			</div>
+
+
 		</section>
 
 	</main>
+
 
 
 
