@@ -1,0 +1,87 @@
+dbstaque-gaele.txt
+
+users
+	id_user
+	user_name
+	user_pseudo
+	email
+	status
+
+	country
+	language
+	job
+
+	password
+	salt
+	token
+	score
+	img_profile
+	datecreated
+	datemodified
+
+
+links
+	id_link
+	id_user
+	link
+
+questions
+	id_question
+	id_user
+	title
+	content
+	id_tag1
+	id_tag2
+	id_tag3
+	id_tag4
+	id_tag5
+	dateCreated
+	dateModified
+
+
+answers
+	id_question
+	id_answer
+	id_user
+	vote
+	content
+	datecreated
+	datemodified
+
+comments
+	id_comment
+	id_question
+	type_comment "question or answer"
+	id_user
+	content
+	dateCreated
+	dateModified
+
+votes
+	id_vote
+	good
+	bad
+
+tags
+	id_tag
+	tag_name
+
+
+// put on a box garder
+{ answer_comments
+	id_answer_comment
+	datecreated
+	datemodified
+
+ question_comments
+	id_commentsQuestion
+	id_question
+	id_user
+	content
+	datecreated
+	dateModified }
+
+
+//option de fin
+{views}
+
