@@ -1,7 +1,8 @@
 <?php
 
 	session_start();
-	include("db.php");
+	include("inc/db.php");
+	include("inc/top.php");
 	include("functions.php");
 
 	$page = "home";
@@ -12,3 +13,6 @@
 	if (function_exists($page)){
 		call_user_func($page);	
 	}
+
+
+	include("inc/bottom.php");
