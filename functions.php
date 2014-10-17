@@ -2,7 +2,7 @@
 
 	function home(){
 		//aller chercher les questions enbdd
-		$questions = getHomeQuestions();
+		//$questions = getHomeQuestions();
 		showPage();
 	}
 
@@ -13,7 +13,10 @@
 	}
 
 	function services(){
-		
+		showPage();
+	}
+
+	function questions(){
 		showPage();
 	}
 
