@@ -2,7 +2,12 @@
 
 	session_start();
 	include("inc/db.php");
+	
+	//html 
 	include("inc/top.php");
+	include("inc/header.php");
+
+	//inclus fonctions php
 	include("functions.php");
 
 	$page = "home";
@@ -15,4 +20,7 @@
 	}
 
 
+
+
+	//html
 	include("inc/bottom.php");
