@@ -1,0 +1,28 @@
+home
+	questions
+	utilisateur
+	nuage de mots clés
+	sans réponses
+
+
+questions
+
+
+utilisateurs
+
+
+nuage de mots clés
+
+
+sans réponses
+
+
+
+
+menu haut
+	s'inscrire
+	se connecter
+
+
+
+
