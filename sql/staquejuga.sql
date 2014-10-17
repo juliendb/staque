@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 17 Octobre 2014 à 10:12
+-- Généré le :  Ven 17 Octobre 2014 à 14:15
 -- Version du serveur :  5.6.16
 -- Version de PHP :  5.5.11
 
@@ -79,10 +79,10 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `title` varchar(250) NOT NULL,
   `content` text NOT NULL,
   `id_tag1` int(11) NOT NULL,
-  `id_tag2` int(11) NOT NULL,
-  `id_tag3` int(11) NOT NULL,
-  `id_tag4` int(11) NOT NULL,
-  `id_tag5` int(11) NOT NULL,
+  `id_tag2` int(11) DEFAULT NULL,
+  `id_tag3` int(11) DEFAULT NULL,
+  `id_tag4` int(11) DEFAULT NULL,
+  `id_tag5` int(11) DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateModified` datetime NOT NULL,
   PRIMARY KEY (`id_question`)
@@ -108,18 +108,18 @@ CREATE TABLE IF NOT EXISTS `tags` (
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(250) NOT NULL,
+  `user_name` varchar(250) DEFAULT NULL,
   `user_pseudo` varchar(50) NOT NULL,
   `email` varchar(250) NOT NULL,
   `status` tinyint(1) DEFAULT NULL,
-  `country` varchar(250) NOT NULL,
-  `language` varchar(250) NOT NULL,
-  `job` varchar(250) NOT NULL,
+  `country` varchar(250) DEFAULT NULL,
+  `language` varchar(250) DEFAULT NULL,
+  `job` varchar(250) DEFAULT NULL,
   `password` varchar(250) NOT NULL,
   `salt` varchar(250) NOT NULL,
   `token` varchar(250) NOT NULL,
   `score` int(11) NOT NULL,
-  `img_profile` varchar(250) NOT NULL,
+  `img_profile` varchar(250) DEFAULT NULL,
   `dateCreated` datetime NOT NULL,
   `dateModified` datetime NOT NULL,
   PRIMARY KEY (`id_user`)
