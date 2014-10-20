@@ -31,7 +31,7 @@
 		showPage();
 	}
 
-	function questionDetails(){
+	function questionsHome(){
 		showPage();
 	}
 	

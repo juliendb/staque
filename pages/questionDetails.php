@@ -15,7 +15,7 @@
 
 	$title = $question["title"];
 	$content = $question["content"];
-	
+
 	$id_user = $question["id_user"];
 	$link_adress = goUserLink($id_user);
 
@@ -25,7 +25,9 @@
 		<section class="detail-question">
 
 			<div class="title-question">
-				<a href=""><?php echo $title; ?></a>
+				<a href="<?php echo goQuestionLink($id_question); ?>">
+					<?php echo $title; ?>
+				</a>
 			</div>
 
 			<div class="content-question">
