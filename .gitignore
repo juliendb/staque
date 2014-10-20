@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 README.md
 =======
 README.md
@@ -6,8 +6,8 @@ autre/
 css/
 inc/
 js/
-pages/
+functions/
 
 functions.php
 index.php
->>>>>>> c352bc358da7c857348cca854fd2d9d409a5a781
+

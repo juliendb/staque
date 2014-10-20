@@ -10,6 +10,15 @@
 	//inclus fonctions php
 	include("functions.php");
 
+
+	// appel de fonctions utiles à php
+
+	include("functions/gestion-donnees.php");
+	include("functions/gestion-security.php");
+	include("functions/utilitaires.php");
+	include("functions/verified-form.php");
+
+
 	$page = "home";
 	if (!empty($_GET['page'])){
 		$page = $_GET['page'];

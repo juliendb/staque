@@ -5,7 +5,7 @@
 		//$questions = getHomeQuestions();
 		showPage();
 	}
-	
+
 
 	function contact(){
 		$data = $_POST;
@@ -19,6 +19,10 @@
 	}
 
 	function questions(){
+		showPage();
+	}
+
+	function signup(){
 		showPage();
 	}
 	

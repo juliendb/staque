@@ -2,7 +2,7 @@
 	
 
 	// inscriptions users
-	function insertUser($user_pseudo, $email, $password, $redirection)
+	function insertUser($user_pseudo, $email, $password)
 	{
 		global $dbh;
 
@@ -28,7 +28,7 @@
 		if ($stmt->execute())
 		{
 			//$redirection
-			goHome();
+			//goHome();
 		}
 	}
 
