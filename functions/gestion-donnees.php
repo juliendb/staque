@@ -2,7 +2,7 @@
 	
 
 	// inscriptions users
-	function insertUser($user_pseudo, $email, $password, $redirection)
+	function insertUser($user_pseudo, $email, $password)
 	{
 		global $dbh;
 
@@ -19,7 +19,7 @@
 
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindValue(':user_pseudo', $user_pseudo);
-		$stmt->bindValue(':email', $my_email);
+		$stmt->bindValue(':email', $email);
 		$stmt->bindValue(':password', $password);
 		$stmt->bindValue(':salt', $salt);
 		$stmt->bindValue(':token', $token);

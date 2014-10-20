@@ -15,7 +15,7 @@
 
 	$title = $question["title"];
 	$content = $question["content"];
-	$lik_user = $question["id_user"];
+	$link_user = $question["id_user"];
 
 ?>
 
@@ -31,33 +31,63 @@
 					<?php echo $content; ?>
 				</p>
 			</div>
+			
+
+			<?php
+				//boucle sur les tags
+				$tags = selectTagsQuestion($id_question);
+				foreach ($tags as $tag):
+			?>
+
+				<div class="tags_questions">
+					<a href="<?php echo $tag["id_tag"]; ?>">
+						<?php echo $tag["tag_name"]; ?>
+					</a>
+				</div>
+
+			<?php endforeach; ?>
+
 
 			<div class="profile_user">
 				<p><?php echo $question["dateCreated"]; ?></p>
 				<div>
-					<a href="<?php echo $link_user; ?>"><img src="<?php echo $question["img_profile"]; ?>"></a>
-					<a href="<?php echo $link_user; ?>"></a>
+					<a href="<?php echo $link_user; ?>">
+						<img src="<?php echo $question["img_profile"]; ?>">
+					</a>
+					<a href="<?php echo $link_user; ?>">
+						<?php echo $question["user_pseudo"]; ?>
+					</a>
 					<p><?php echo $question["score"]; ?></p>
 				</div>
 			</div>
 			
+
+
 			<?php 
+				// boucle de commentraires
 				$comments = selectComments($id_question, "question");
 				foreach($comments as $comment):
 			?>
-			<div class="comment">
-				<p><?php echo $comment["content"]; ?></p>
-			</div>
+				<div class="comment">
+					<p><?php echo $comment["content"]; ?></p>
+					<div class="comment_profile">
+						<a href="<?php echo $comment["user_pseudo"]; ?>">
+							<?php echo $comment["user_pseudo"]; ?>
+						</a>
+						<p><?php echo $comment["dateCreated"]; ?></p>
+					</div>
+				</div>
+			<?php endforeach; ?>
 
 		</section>
 
 
 		
 		<?php 
-			$reponses = selectAnswers($id_question);
-			foreach($reponses as $reponse): 
+			$answers = selectAnswers($id_question);
+			foreach($answers as $answer): 
 
-			$link_user = $reponse["id_user"];
+			$link_user = $answer["id_user"];
 		?>
 			<section class="detail-reponses">
 					
@@ -66,16 +96,37 @@
 					<a href="">-</a>
 				</div>
 
-				<p><?php echo $reponse["content"]; ?></p>
+				<p><?php echo $answer["content"]; ?></p>
 				
 				<div class="profile_user">
-					<p><?php echo $reponse["dateCreated"]; ?></p>
+					<p><?php echo $answer["dateCreated"]; ?></p>
 					<div>
-						<a href="<?php echo $link_user; ?>"><img src="<?php echo $reponse["img_profile"]; ?>"></a>
-						<a href="<?php echo $link_user; ?>"></a>
-						<p><?php echo $reponse["score"]; ?></p>
+						<a href="<?php echo $link_user; ?>">
+							<img src="<?php echo $answer["img_profile"]; ?>">
+						</a>
+						<a href="<?php echo $link_user; ?>">
+							<?php echo $answer["user_pseudo"]; ?>
+						</a>
+						<p><?php echo $answer["score"]; ?></p>
 					</div>
 				</div>
+				
+				<?php 
+					// boucle de commentraires
+					$comments = selectComments($answer["id_answer"], "answer");
+					foreach($comments as $comment):
+				?>
+					<div class="comment">
+						<p><?php echo $comment["content"]; ?></p>
+
+						<div class="comment_profile">
+							<a href="<?php echo $comment["user_pseudo"]; ?>">
+								<?php echo $comment["user_pseudo"]; ?>
+							</a>
+							<p><?php echo $comment["dateCreated"]; ?></p>
+						</div>
+					</div>
+				<?php endforeach; ?>
 
 			</section>
 		<?php endforeach; ?>
