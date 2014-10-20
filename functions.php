@@ -5,7 +5,7 @@
 		//$questions = getHomeQuestions();
 		showPage();
 	}
-	
+
 
 	function contact(){
 		$data = $_POST;
@@ -22,10 +22,24 @@
 		showPage();
 	}
 
+
+	function signup(){
+		showPage();
+	}
+
+	function login(){
+		showPage();
+	}
+
 	function questionDetails(){
 		showPage();
 	}
 	
+
+	function userDetails(){
+		showPage();
+	}
+
 	// Fonctions include de pages
 	function showPage(){
 		global $page;

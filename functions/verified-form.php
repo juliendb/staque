@@ -9,14 +9,14 @@
 
 
 		if (empty($email)){
-			$errors[] = "Please provide an email !";
+			$errors[] = "Entrez un email svp !";
 		}
 		elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-			$errors[] = "Your email is not valid !";
+			$errors[] = "Votre email n'est pas valide !";
 		}
 		elseif (emailIsExist($email))
 		{
-			$errors[] = "This email already exists !";
+			$errors[] = "Cet email existe déjà !";
 		}
 
 
@@ -29,10 +29,10 @@
 		$errors = array();
 
 		if (empty($pseudo)){
-			$errors[] = "Please provide an username !";
+			$errors[] = "Entrez un pseudo svp !";
 		}
 		elseif (pseudoIsExist($pseudo)){
-			$errors[] = "This username already exists !";
+			$errors[] = "Ce pseudo existe déjà !";
 		}
 
 
@@ -43,24 +43,24 @@
 
 
 
-	// cette fonction là je te là laisse la fonction hein gaele !
+	
 
 	// vérifie email pour inscription
-	function isValidPasswordInsc()
+	function isValidPasswordInsc($password, $password_bis)
 	{
 		$errors = array();
 
 		if (empty($password)){
-			$errors[] = "Please choose a password !";
+			$errors[] = "Choisissez un mot de passe svp !";
 		}
 		elseif (empty($password_bis)){
-			$errors[] = "Please confirm your password !";
+			$errors[] = "Confirmez votre mot de passe, svp !";
 		}
 		elseif ($password_bis != $password){
-			$errors[] = "Your passwords do not match !";
+			$errors[] = "Votre mot de passse ne correspond pas !";
 		}
 		elseif (strlen($password) < 7){
-			$errors[] = "Your password should have at least 7 characters !";
+			$errors[] = "Votre mot de passe doit contenir 7 caractères minimum !";
 		}
 
 
