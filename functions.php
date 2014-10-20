@@ -19,13 +19,21 @@
 	}
 
 
-	// Fonctions include de pages
+	function services(){
+		showPage();
+	}
 
+	function questions(){
+		showPage();
+	}
+	
+	// Fonctions include de pages
 	function showPage(){
 		global $page;
 		include("pages/".$page.".php");
 	}
 
-	function getHomeQuestions(){
+	function getHomeQuestions()
+	{
 		
 	}
