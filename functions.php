@@ -21,6 +21,10 @@
 	function questions(){
 		showPage();
 	}
+
+	function questionDetails(){
+		showPage();
+	}
 	
 	// Fonctions include de pages
 	function showPage(){
