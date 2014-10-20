@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 	<main class="container">
 		<section id="presentation">
 			<div id="hello"></div>
@@ -80,4 +79,4 @@
 
 
 
->>>>>>> 47ebc4b4a4341585ea4b82309803b9f4f31ffc7f
+
