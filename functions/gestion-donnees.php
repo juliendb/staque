@@ -5,7 +5,7 @@
 	function insertUser($user_pseudo, $email, $password)
 	{
 		global $dbh;
-		
+
 
 
 		// sécurisation du mot de passe de l'utilisateur
