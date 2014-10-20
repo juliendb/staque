@@ -5,6 +5,7 @@
 	function insertUser($user_pseudo, $email, $password)
 	{
 		global $dbh;
+		
 
 
 		// sécurisation du mot de passe de l'utilisateur
@@ -14,12 +15,12 @@
 		$token = randomString();
 
 
-		$sql = "INSERT INTO users (userpseudo, email, status, password, salt, token, score, dateCreated, dateModified)
-				VALUES (:userpseudo, :email, 1, :password, :salt, :token, 5, NOW(), NOW())";
+		$sql = "INSERT INTO users (user_pseudo, email, status, password, salt, token, score, dateCreated, dateModified)
+				VALUES (:user_pseudo, :email, 1, :password, :salt, :token, 5, NOW(), NOW())";
 
 		$stmt = $dbh->prepare($sql);
-		$stmt->bindValue(':userpseudo', $user_pseudo);
-		$stmt->bindValue(':email', $my_email);
+		$stmt->bindValue(':user_pseudo', $user_pseudo);
+		$stmt->bindValue(':email', $email);
 		$stmt->bindValue(':password', $password);
 		$stmt->bindValue(':salt', $salt);
 		$stmt->bindValue(':token', $token);
@@ -40,17 +41,17 @@
 
 
 	// login de l'utilisateur
-	function selectLogin($pseudo, $password)
+	function selectLogin($user_pseudo, $password)
 	{
 		global $dbh;
 
 		//recherche l'utilisateur en bdd par son pseudo (ou email)
 		$sql = "SELECT * FROM users
-				WHERE pseudo = :login OR email = :login
+				WHERE user_pseudo = :login OR email = :login
 				LIMIT 1";
 
 		$stmt = $dbh->prepare($sql);
-		$stmt->bindValue(":login", $pseudo);
+		$stmt->bindValue(":login", $user_pseudo);
 		$stmt->execute();
 
 		$user = $stmt->fetch();
@@ -83,15 +84,15 @@
 
 
 	//si pseudo existe
-	function pseudoIsExist($pseudo)
+	function pseudoIsExist($user_pseudo)
 	{
 		global $dbh;
 
 		$sql = "SELECT COUNT(*) FROM users 
-				WHERE pseudo = :pseudo";
+				WHERE user_pseudo = :user_pseudo";
 
 		$stmt = $dbh->prepare($sql);
-		$stmt->bindValue(":pseudo", $pseudo);
+		$stmt->bindValue(":user_pseudo", $user_pseudo);
 		$stmt->execute();
 
 		// affiche

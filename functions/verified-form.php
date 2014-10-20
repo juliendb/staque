@@ -43,17 +43,17 @@
 
 
 
-	// cette fonction là je te là laisse la fonction hein gaele !
+	
 
 	// vérifie email pour inscription
-	function isValidPasswordInsc($password ,$passwordBis)
+	function isValidPasswordInsc($password, $password_bis)
 	{
 		$errors = array();
 
 		if (empty($password)){
 			$errors[] = "Choisissez un mot de passe svp !";
 		}
-		elseif (empty($passwordBis)){
+		elseif (empty($password_bis)){
 			$errors[] = "Confirmez votre mot de passe, svp !";
 		}
 		elseif ($password_bis != $password){

@@ -4,12 +4,9 @@
 
 	//mes variables
 	$pseudoUser 	= "";
-	$emailUser		= "";
 	$password		= "";
-	$passwordBis	= "";
 
-
-	/********* Vérification du formulaire d'inscription ***********/
+	/********* Vérification du formulaire de connection ***********/
  
 	//est-ce que le form a été soumis
 	if (!empty($_POST)){
@@ -17,44 +14,36 @@
 
 		//récupère les données dans mes variables
 		$pseudoUser 	= $_POST['pseudoUser'];
-		$emailUser 		= $_POST['emailUser'];
 		$password 		= $_POST['password'];
-		$passwordBis 	= $_POST['passwordBis']; 
 
 
 		/*
 		*	 début de la validation
 		*/
 
-		//pseudoUser est valide et si il n'existe pas
+		//vérifie si pseudo est valide dans le champs
 		if ( isValidPseudo($pseudoUser) ) {
 			$errors[] = isValidPseudo($pseudoUser);
 		}
-	
 
-		//email est est valide et si il n'existe pas
-		if (  verifiedEmail($emailUser) ) {
-			$errors[] = verifiedEmail($emailUser);
+		//vérifie si à la place du psuedo on rentre email, si celui-ci est valide
+		if ( verifiedEmail($pseudoUser) ) {
+			$errors[] = verifiedEmail($pseudoUser);
 		}
 
-		//password est valide et si il n'existe pas
-
-		if ( isValidPasswordInsc($password ,$passwordBis) ) {
-			$errors[] =  isValidPasswordInsc($password , $passwordBis);
+		//vérifie si le mot de passe est valise
+		if ( isValidPasswordInsc($pseudoUser) ) {
+			$errors[] = isValidPasswordInsc($pseudoUser);
 		}
-		
 
 		print_r($errors);
 
-
-		//si le form est valide, envoit le message
 		if(empty($errors)){
 		
-			insertUser($pseudoUser, $emailUser, $password);
+			selectLogin($pseudoUser, $password);
 
-			//include("mail.php");
 		}
-	} 
+	}
 
 ?>
 
@@ -66,7 +55,7 @@
 		<section class="formulaire">
 
 			<div class="title-question">
-				<h1>PAS ENCORE INSCRIT ?  CRÉEZ UN COMPTE !</h1>
+				<h1>Connectez-vous à votre compte</h1>
 			</div>
 
 			<form id="inscrition" method="POST" novalidate>
@@ -79,14 +68,6 @@
 					<?php endif; ?>
 				</div>
 
-				<div class="form-group">
-					<label for="emailUser">Entrez votre email</label>
-					<input type="text" name="emailUser" id="emailUser" value="<?php echo $emailUser; ?>" />
-
-					<?php if (!empty($errors['emailUser'])): ?>
-				
-					<?php endif; ?>
-				</div>
 
 				<div class="form-group">
 					<label for="password">Entrez un mot de passe</label>
@@ -97,14 +78,6 @@
 					<?php endif; ?>
 				</div>
 
-				<div class="form-group">
-					<label for="passwordBis">Vérifiez votre mot de passe</label>
-					<input type="password" name="passwordBis" id="passwordBis" value="<?php echo $passwordBis; ?>" />
-
-					<?php if (!empty($errors['passwordBis'])): ?>
-					
-					<?php endif; ?>
-				</div>
 
 				<div class="form-group">
 					<div class="fake-label"></div>
