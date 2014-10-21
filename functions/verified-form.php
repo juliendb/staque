@@ -40,6 +40,22 @@
 	}
 
 
+	//vérifie name
+	function isValidName($name)
+	{
+		$errors = array();
+
+		if (strlen($name) < 2){
+			$errors[] = "Votre mot de passe doit contenir 2 caractères minimum !";
+		}
+		elseif (strlen($name) > 100) {
+			$errors[] = "Votre mot de passe est trop long !";
+		}
+
+		return $errors;
+	}
+
+
 
 
 

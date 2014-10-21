@@ -28,7 +28,7 @@
 			</div>
 
 			<div class="infosUserBis">
-
+				
 				<?php foreach ($linksUser as $linkUser): ?>
 					<a href="<?php echo $linkUser['link']; ?>"><?php echo $linkUser['link']; ?></a>
 				<?php endforeach; ?>

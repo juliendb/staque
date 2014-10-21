@@ -374,7 +374,6 @@
 				LEFT JOIN answers AS A ON A.id_user = U.id_user
 				GROUP BY U.id_user";
 
-
 		$stmt = $dbh->prepare($sql);
 		$stmt->execute();
 		
@@ -417,6 +416,7 @@
 
 						COUNT(DISTINCT(Q.id_question)) AS TotalQuestions,
 						COUNT(DISTINCT(A.id_answer)) AS TotalAnswers
+
 
 				FROM users AS U
 				LEFT JOIN questions AS Q ON Q.id_user = U.id_user

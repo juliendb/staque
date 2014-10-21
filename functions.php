@@ -37,7 +37,13 @@
 	}
 
 
+	function userEdit(){
+		showPage();
+	}
 
+	function usersHome(){
+		showPage();
+	}
 
 
 	// Fonctions include de pages
