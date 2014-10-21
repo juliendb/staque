@@ -1,7 +1,8 @@
 <?php 
-
-	$questions = selectQuestionsHome();
 	
+	$questions = selectQuestionsHome();
+
+	$date = "";
 ?>
 
 
@@ -11,6 +12,18 @@
 			foreach ($questions as $question):
 			$id_question = $question["id_question"];
 			$link_question = goQuestionLink($id_question);
+			
+			// vérifie la date question
+			$dateCreated = $question["dateCreated"];
+			$dateModified = $question["dateModified"];
+			if (getBetweenDate($dateCreated, $dateModified) == "match")
+			{
+				$date = "posée il y a ".getBetweenDate($dateCreated, "NOW");
+			
+			} else {
+				
+				$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
+			}
 		?>
 
 			<section class="question">
@@ -28,8 +41,7 @@
 
 				
 				<div class="infosUser">
-					<p><?php echo $question["dateCreated"]; ?></p>
-					<p><?php echo $question["dateModified"]; ?></p>
+					<p><?php echo $date; ?></p>
 					<a href="<?php echo goUserLink($question['id_user']); ?>">
 						<?php echo $question["user_pseudo"]; ?>
 					</a>

@@ -321,7 +321,7 @@
 	// affiche id_tag pour créer dans la table et si en plus on mets un petit if et fonction c'est cool !
 	//if (selectIDTag("JQuery")) $lala = selectIDTag("JQuery");
 	//insertTagsQuestion(1, $lala["id_tag"]);
-	function selectIDTag($tag_name)
+	/*function selectIDTag($tag_name)
 	{
 		global $dbh;
 
@@ -338,6 +338,7 @@
 		//affiche
 		return $stmt->fetch();
 	}
+	*/
 
 
 

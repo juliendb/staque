@@ -19,6 +19,16 @@
 	$id_user = $question["id_user"];
 	$link_adress = goUserLink($id_user);
 
+
+	// vérifie la date question
+	$dateCreated = $question["dateCreated"];
+	$dateModified = $question["dateModified"];
+	if (getBetweenDate($dateCreated, $dateModified) == "match") {
+		$date = "posée il y a ".getBetweenDate($dateCreated, "NOW");
+	} else {
+		$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
+	}
+
 ?>
 
 	<main class="container">
@@ -53,7 +63,7 @@
 
 
 			<div class="profile_user">
-				<p><?php echo $question["dateCreated"]; ?></p>
+				<p><?php echo $date; ?></p>
 				<div>
 					<a href="<?php echo $link_adress; ?>">
 						<img src="<?php echo $question["img_profile"]; ?>">
@@ -74,6 +84,16 @@
 
 				$id_user = $comment["id_user"];
 				$link_adress = goUserLink($id_user);
+
+
+				// vérifie la date comment
+				$dateCreated = $comment["dateCreated"];
+				$dateModified = $comment["dateModified"];
+				if (getBetweenDate($dateCreated, $dateModified) == "match"){
+					$date = "répondu il y a ".getBetweenDate($dateCreated, "NOW");
+				} else {
+					$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
+				}
 			?>
 				<div class="comment">
 					<p><?php echo $comment["content"]; ?></p>
@@ -81,7 +101,7 @@
 						<a href="<?php echo $link_adress; ?>">
 							<?php echo $comment["user_pseudo"]; ?>
 						</a>
-						<p><?php echo $comment["dateCreated"]; ?></p>
+						<p><?php echo $date; ?></p>
 					</div>
 				</div>
 			<?php endforeach; ?>
@@ -98,6 +118,16 @@
 			$id_user = $answer["id_user"];
 			$link_adress = goUserLink($id_user);
 
+
+			// vérifie la date answer
+			$dateCreated = $answer["dateCreated"];
+			$dateModified = $answer["dateModified"];
+			if (getBetweenDate($dateCreated, $dateModified) == "match"){
+				$date = "répondu il y a ".getBetweenDate($dateCreated, "NOW");
+			} else {
+				$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
+			}
+
 		?>
 			<section class="detail-reponses">
 					
@@ -109,7 +139,8 @@
 				<p><?php echo $answer["content"]; ?></p>
 				
 				<div class="profile_user">
-					<p><?php echo $answer["dateCreated"]; ?></p>
+					<p><?php echo $date; ?></p>
+
 					<div>
 						<a href="<?php echo $link_adress; ?>">
 							<img src="<?php echo $answer["img_profile"]; ?>">
@@ -128,6 +159,16 @@
 
 					$id_user = $comment["id_user"];
 					$link_adress = goUserLink($id_user);
+
+
+					// vérifie la date comment
+					$dateCreated = $comment["dateCreated"];
+					$dateModified = $comment["dateModified"];
+					if (getBetweenDate($dateCreated, $dateModified) == "match"){
+						$date = "répondu il y a ".getBetweenDate($dateCreated, "NOW");
+					} else {
+						$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
+					}
 				?>
 					<div class="comment">
 						<p><?php echo $comment["content"]; ?></p>
@@ -136,7 +177,7 @@
 							<a href="<?php echo $link_adress; ?>">
 								<?php echo $comment["user_pseudo"]; ?>
 							</a>
-							<p><?php echo $comment["dateCreated"]; ?></p>
+							<p><?php echo $date; ?></p>
 						</div>
 					</div>
 				<?php endforeach; ?>
