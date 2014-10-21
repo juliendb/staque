@@ -40,6 +40,10 @@
 		showPage();
 	}
 
+	function userEdit(){
+		showPage();
+	}
+
 	// Fonctions include de pages
 	function showPage(){
 		global $page;
