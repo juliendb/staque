@@ -45,6 +45,14 @@
 		showPage();
 	}
 
+	function commentsCreate(){
+		showPage();
+	}
+
+	function answersCreate(){
+		showPage();
+	}
+
 
 	// Fonctions include de pages
 	function showPage(){
