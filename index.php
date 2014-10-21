@@ -3,20 +3,20 @@
 	session_start();
 	include("inc/db.php");
 	
-	//html 
-	include("inc/top.php");
-	include("inc/header.php");
-
-	//inclus fonctions php
-	include("functions.php");
-
-
 
 	// appel de fonctions utiles à php
 	include("functions/gestion-donnees.php");
 	include("functions/gestion-security.php");
 	include("functions/utilitaires.php");
 	include("functions/verified-form.php");
+
+
+	//html 
+	include("inc/top.php");
+	include("inc/header.php");
+
+	//inclus fonctions php
+	include("functions.php");
 
 
 

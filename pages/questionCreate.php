@@ -14,7 +14,6 @@
 	$errors = array();
 	$listTags = array();
 
-	for($i=0; $i<5; $i++) {	$tags[] = ""; }
 
 	$titleQuestion = "";
 	$contentQuestion = "";
@@ -31,6 +30,7 @@
 		for($i=0; $i<5; $i++)
 		{
 			if (!empty($tags[$i])) $tags[$i] = $_POST[('tag'.$i)];
+			print_r($tags);
 
 			// insere tags et remplis l'arrau
 			if (selectIDTag($tags[$i])) echo "toto";

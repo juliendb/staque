@@ -21,24 +21,22 @@
 		*	 début de la validation
 		*/
 
-		//vérifie si pseudo est valide dans le champs
-		if ( isValidPseudo($pseudoUser) ) {
-			$errors[] = isValidPseudo($pseudoUser);
-		}
-
-		//vérifie si à la place du psuedo on rentre email, si celui-ci est valide
-		if ( verifiedEmail($pseudoUser) ) {
-			$errors[] = verifiedEmail($pseudoUser);
+		//vérifie si pseudo ou email est valide dans le champs
+		if (emailIsExist($pseudoUser) || pseudoIsExist($pseudoUser)) 
+		{ } else {
+			$errors[] = "pseudo !";
 		}
 
 		//vérifie si le mot de passe est valise
-		if ( isValidPasswordInsc($pseudoUser) ) {
-			$errors[] = isValidPasswordInsc($pseudoUser);
+		if (isValidPasswordInsc($password, $password)) 
+		{
+			$errors[] = "password !";
 		}
 
 		print_r($errors);
 
-		if(empty($errors)){
+		if(empty($errors))
+		{
 		
 			selectLogin($pseudoUser, $password);
 
@@ -71,7 +69,7 @@
 
 				<div class="form-group">
 					<label for="password">Entrez un mot de passe</label>
-					<input type="password" name="password" id="password" value="<?php echo $password; ?>" />
+					<input type="password" name="password" id="password" value="" />
 
 					<?php if (!empty($errors['password'])): ?>
 					

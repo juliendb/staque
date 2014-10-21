@@ -1,9 +1,39 @@
-<header id="header">
+<?php 
+	
+	
+
+	if (userIsLogged()) echo "toto";
+	
+	$connect = userIsLogged();
+	//echo userIsLogged();
+
+	// si session ouverte
+	if ($connect)
+	{
+		//echo "toto";
+		//print_r(($_SESSION["user"]));
+	} else {
+
+
+	}
+	
+	
+
+?>
+	
+
+
+	<header id="header">
 		<div id="access">
 			<div id="sign">
-				<a href="">s'inscrire</a>
-				<a href="">se connecter</a>
-				<a href="">se déconnecter</a>
+				<?php if (!$connect): ?>
+					<a href="">s'inscrire</a> 
+					<a href="">se connecter</a>
+				<?php endif; ?>
+
+				<?php if ($connect): ?>
+					<a href="">se déconnecter</a>
+				<?php endif; ?>
 			</div>
 
 			<form id="search">

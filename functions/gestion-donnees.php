@@ -21,7 +21,7 @@
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindValue(':user_pseudo', $user_pseudo);
 		$stmt->bindValue(':email', $email);
-		$stmt->bindValue(':password', $password);
+		$stmt->bindValue(':password', $hashedPassword);
 		$stmt->bindValue(':salt', $salt);
 		$stmt->bindValue(':token', $token);
 
@@ -60,12 +60,13 @@
 		$hashedPassword = hashPassword($password, $user['salt']);
 		if ($hashedPassword === $user['password'])
 		{
-			return true;
-
-
+			
 			// si truc alors bidule !
+			echo "toto connect";
 			$_SESSION['user'] = $user;
-			goHome();
+
+
+			return true;
 		}
 	}
 

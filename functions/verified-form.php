@@ -9,14 +9,14 @@
 
 
 		if (empty($email)){
-			$errors[] = "Entrez un email svp !";
+			$errors = "Entrez un email svp !";
 		}
 		elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
-			$errors[] = "Votre email n'est pas valide !";
+			$errors = "Votre email n'est pas valide !";
 		}
 		elseif (emailIsExist($email))
 		{
-			$errors[] = "Cet email existe déjà !";
+			$errors = "Cet email existe déjà !";
 		}
 
 
