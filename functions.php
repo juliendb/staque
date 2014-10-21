@@ -1,28 +1,12 @@
 <?php
-
+	// home page
 	function home(){
-		//aller chercher les questions enbdd
-		//$questions = getHomeQuestions();
 		showPage();
 	}
 
 
-	function contact(){
-		$data = $_POST;
-		//validation...
-		showPage();
-	}
-
-
-	function services(){
-		showPage();
-	}
-
-	function questions(){
-		showPage();
-	}
-
-
+	
+	// inscription et login 
 	function signup(){
 		showPage();
 	}
@@ -31,26 +15,35 @@
 		showPage();
 	}
 
+
+
+	// affiche questions home et autres
 	function questionsHome(){
 		showPage();
 	}
-	
 
+	function questionDetails(){
+		showPage();
+	}
+
+
+	// affiche page user et autres
 	function userDetails(){
 		showPage();
 	}
+
 
 	function userEdit(){
 		showPage();
 	}
 
+	function usersHome(){
+		showPage();
+	}
+
+
 	// Fonctions include de pages
 	function showPage(){
 		global $page;
 		include("pages/".$page.".php");
-	}
-
-	function getHomeQuestions()
-	{
-		
 	}
