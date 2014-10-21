@@ -26,6 +26,10 @@
 		showPage();
 	}
 
+	function questionCreate(){
+		showPage();
+	}
+
 
 	// affiche page user et autres
 	function userDetails(){

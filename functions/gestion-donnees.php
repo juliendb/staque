@@ -321,7 +321,7 @@
 	// affiche id_tag pour créer dans la table et si en plus on mets un petit if et fonction c'est cool !
 	//if (selectIDTag("JQuery")) $lala = selectIDTag("JQuery");
 	//insertTagsQuestion(1, $lala["id_tag"]);
-	/*function selectIDTag($tag_name)
+	function selectIDTag($tag_name)
 	{
 		global $dbh;
 
@@ -338,7 +338,6 @@
 		//affiche
 		return $stmt->fetch();
 	}
-	*/
 
 
 
@@ -370,8 +369,9 @@
 						COUNT(DISTINCT(A.id_answer)) AS TotalAnswers
 
 
-				FROM users AS U, questions AS Q, answers AS A
-				WHERE Q.id_user = U.id_user AND A.id_user = U.id_user
+				FROM users AS U
+				LEFT JOIN questions AS Q ON Q.id_user = U.id_user
+				LEFT JOIN answers AS A ON A.id_user = U.id_user
 				GROUP BY U.id_user";
 
 
@@ -418,9 +418,11 @@
 						COUNT(DISTINCT(Q.id_question)) AS TotalQuestions,
 						COUNT(DISTINCT(A.id_answer)) AS TotalAnswers
 
-
-				FROM users AS U, questions AS Q, answers AS A
-				WHERE Q.id_user = :id_user AND A.id_user = :id_user";
+				FROM users AS U
+				LEFT JOIN questions AS Q ON Q.id_user = U.id_user
+				LEFT JOIN answers AS A ON A.id_user = U.id_user
+				WHERE U.id_user = :id_user
+				GROUP BY U.id_user";
 
 
 		$stmt = $dbh->prepare($sql);
@@ -637,9 +639,9 @@
 
 		// si execute retourne à la page en question
 		if ($stmt->execute())
-		{
-			// on verra ce que l'on affiche
-			//goHome();
+		{	
+			$lastID = $dbh->lastInsertId();
+			header("Location: goQuestionLink($lastID)");
 		}
 	}
 
