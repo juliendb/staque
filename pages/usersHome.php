@@ -1,9 +1,6 @@
 <?php
 	
 	$users = selectUsersHome();
-	//print_r($users);
-	//die();
-	
 
 ?>
 
@@ -16,11 +13,14 @@
 			</div>
 
 			<div class="users">
-			<?php foreach ($users as $user):?>
-			
-
+			<?php 
+				foreach ($users as $user):
+				$id_user= $user['id_user'];
+			?>
+				
+				
 				<div id="user">
-					<a href="<?php echo goUserLink($id_user); ?>" ><img src="<?php echo $user['img_profile']; ?>" ></a>
+					<a href="<?php echo goUserLink($id_user); ?>" ><img src="<?php //echo $user['img_profile']; ?>" ></a>
 					<a href="<?php echo goUserLink($id_user); ?>" ><?php echo $user['user_pseudo']; ?></a>
 
 
@@ -28,14 +28,10 @@
 					<p>Score :<?php echo $user['score']; ?></p>
 					<p>Questions :<?php echo $user['TotalQuestions']; ?></p>
 					<p>Score :<?php echo $user['TotalAnswers']; ?></p>
-
-			<?php endforeach; ?>
-
-					
-
 				</div>
-			</div>
-			
 
+				<?php endforeach; ?>	
+				
+			</div>
 		</section>
 	</main>
