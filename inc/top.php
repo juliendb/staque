@@ -11,6 +11,7 @@
 	<title>staque juga</title>
 	<meta name="description" content="">
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400' rel='stylesheet' type='text/css'>
+	<link href='css/style.css' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <div id="wrapper">
