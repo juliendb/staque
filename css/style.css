@@ -63,7 +63,6 @@ font-family: 'Lato', sans-serif;
 #wrapper {
 	width: 100%;
 	text-align: center;
-	height: 60px;
 
 }
 
@@ -74,15 +73,14 @@ font-family: 'Lato', sans-serif;
 }
 
 
-
-
+/* header */
+header {
+	position:relative;
+}
 
 #header #connection {
 	background: #ff5639;
-	top: 0;
-	right: 0;
 	height: 60px;
-
 }
 
 #logo {
@@ -102,9 +100,135 @@ font-family: 'Lato', sans-serif;
 
 #sign {
 	float:right;
-	margin-top: 15px;
+	margin-top:15px;	
+}
+
+
+
+
+
+/* bouton de recherche*/
+
+#search {
+	display: inline;
+	padding-right: 30px;
+}
+
+#search input[type=submit] {
+	display: inline;
+	background: url('../img/loupe.png') no-repeat;
+	width: 21px;
+	height: 21px;
+	border: none;
+}
+
+#search input[type=text] {
+	border:none;
+	width: 80px;
+	background-color:transparent;
+	border-bottom: solid 1px rgba(255, 255, 255, 0.8);
+}
+
+
+
+
+
+
+/* s'inscrire et se connecter */
+
+#sign  a, p{
+	display: inline;
+	text-decoration: none;
 	font-family: 'ubuntu';
-	color:white;
+	text-transform: uppercase;
+	font-size: 13px;
+	margin-right: 22px;
+	color: white;
+}
+
+.pictohead{
+	display: inline;
+	width: 15px;
+	height: 17px;
+	margin-left: -21px;
+	margin-top: 5px;
+	background-image:url('../img/minihead.png');
+	position: absolute;
+	z-index: 99;
+}
+
+/* Menu*/
+
+nav a{
+	text-decoration: none;
+	font-family: 'ubuntu';
+	font-weight: 400;
+	font-size: 18px;
+	margin: 50px 50px 0 0;
+	text-transform: uppercase;
+	color: #fff;
 
 }
->>>>>>> 06e96972ee8f46c2d0a7fb7bc0a6fc749ee9be90
+
+
+
+
+
+/*bouton poser une question */
+
+#askQuestion {
+	float: right;
+	display: block;
+	margin-top: 20px;
+	width: 250px;
+	height: 50px;
+	background-color: #42cc70;
+	border-radius: 3px;
+	text-align: center;
+	position: relative;
+}
+
+#askQuestion a:before {
+	content: "";
+	width: 25px;
+	height:25px;
+	background-image:url("../img/losange.png");
+	position: absolute;
+	right: 208px;
+	top: 12px;
+	z-index: 100;
+}
+
+#askQuestion a{
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 15px;
+	text-decoration: none;
+	letter-spacing: 0.04em ;
+	margin-left: 33px;
+	color : #fff;
+	text-shadow: 0px 0px 1px rgba(0 0 0 0.5);
+	text-transform: uppercase;
+	line-height: 50px;
+}
+
+#askQuestion:hover{
+	display: block;
+	width: 250px;
+	height: 50px;
+	background-color: #52FF99;
+	border-radius: 3px;
+	text-align: center;
+	transition-duration: 0.2s;
+}
+
+
+#askQuestion:active{
+	display: block;
+	width: 250px;
+	height: 50px;
+	background-color: #42cc70;
+	border-radius: 3px;
+	text-align: center;
+	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+}
