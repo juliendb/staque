@@ -28,13 +28,33 @@
 		// si execute retourne à la page en question
 		if ($stmt->execute())
 		{
-			//$redirection
-			//goHome();
+			selectLogin($user_pseudo, $password);
+			goHome();
 		}
 	}
 
 
 
+
+
+	function updateStatus($id_user, $status)
+	{
+		if ($status == "connected") $status = 1;
+		if ($status == "deconnected") $status = 0;
+
+
+		global $dbh;
+
+		$sql = "UPDATE users
+				SET status = :status
+				WHERE id_user = :id_user";
+
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":id_user", $id_user);
+		$stmt->bindValue(":status", $status);
+		$stmt->execute();
+	}
 
 
 
@@ -62,13 +82,12 @@
 		{
 			
 			// si truc alors bidule !
-			echo "toto connect";
+			updateStatus($user["id_user"], "connected");
 			$_SESSION['user'] = $user;
 
-
-			return true;
 		}
 	}
+
 
 
 
@@ -137,6 +156,43 @@
 
 
 	// on affiche avec select
+
+
+
+	function selectTotalMembers()
+	{
+		$list = array();
+		global $dbh;
+
+
+		// membres total
+		$sql = "SELECT COUNT(*)
+				FROM users";
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		$list[] = $stmt->fetchColumn();
+
+
+		// membres connecte
+		$sql = "SELECT COUNT(*)
+				FROM users
+				WHERE status = 1";
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		$list[] = $stmt->fetchColumn();
+		
+		
+		return $list;
+	}
+
+
+
+
+
+
+
 
 
 	//select link user en fonction de id user
@@ -365,6 +421,8 @@
 						U.img_profile,
 						U.country,
 						U.score,
+						U.dateCreated,
+						U.dateModified,
 
 						COUNT(DISTINCT(Q.id_question)) AS TotalQuestions,
 						COUNT(DISTINCT(A.id_answer)) AS TotalAnswers
@@ -469,13 +527,13 @@
 		$stmt->bindValue(":job", $job);
 		$stmt->bindValue(":country", $country);
 		$stmt->bindValue(":img_profile", $img_profile);
-		$stmt->execute();
 		
+
 		// si execute retourne à la page en question
 		if ($stmt->execute())
 		{
-			// on verra ce que l'on affiche
-			//goHome();
+			$link = goUserLink($id_user);
+			header("Location: $link");
 		}
 	}
 
@@ -698,8 +756,12 @@
 		// si execute retourne à la page en question
 		if ($stmt->execute())
 		{
-			// on verra ce que l'on affiche
-			//goHome();
+			// redirige vers page question
+			if ($type_comment == "question") 
+			{
+				$link = goQuestionLink($id_rubric);
+				header("Location: $link");
+			}
 		}
 	}
 

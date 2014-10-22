@@ -3,13 +3,23 @@
 	$id_question = 0;
 	if (empty($_GET['id_question']))
 	{
-		die("404");
+		goHome();
 	
 	} else {
 		$id_question = $_GET['id_question'];
 	}
 
+
+
+	$my_user = array();
+	$connect = userIsLogged();
+
+	// si session ouverte
+	if ($connect) $my_user = $_SESSION["user"];
+
+
 	
+
 
 	$question = selectQuestion($id_question);
 
@@ -29,6 +39,7 @@
 		$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
 	}
 
+
 ?>
 
 	<main class="container">
@@ -47,6 +58,9 @@
 			</div>
 			
 
+
+
+
 			<?php
 				//boucle sur les tags
 				$tags = selectTagsQuestion($id_question);
@@ -54,12 +68,13 @@
 			?>
 
 				<div class="tags_questions">
-					<a href="<?php echo $tag["id_tag"]; ?>">
-						<?php echo $tag["tag_name"]; ?>
-					</a>
+					<p><?php echo $tag["tag_name"]; ?></p>
 				</div>
 
 			<?php endforeach; ?>
+
+
+
 
 
 			<div class="profile_user">
@@ -74,6 +89,20 @@
 					<p><?php echo $question["score"]; ?></p>
 				</div>
 			</div>
+
+
+
+
+
+			<?php 
+				//editer une question si la question est à utilisateur
+				if ($connect && equalUser($my_user["id_user"], $question["id_user"])): 
+				$link = goUpdateQuestionLink($my_user["id_user"], $question["id_question"]);
+			?>
+				<a href="<?php echo $link; ?>">éditer ma question ?</a>
+			<?php endif; ?>
+
+
 			
 
 
@@ -94,6 +123,7 @@
 				} else {
 					$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
 				}
+
 			?>
 				<div class="comment">
 					<p><?php echo $comment["content"]; ?></p>
@@ -104,7 +134,17 @@
 						<p><?php echo $date; ?></p>
 					</div>
 				</div>
+
 			<?php endforeach; ?>
+
+
+			<?php
+				// lien vers creation commmentaire
+				$link = "index.php?page=signup";
+				if ($connect) $link = goCommentLink($my_user["id_user"], $id_question, "question");
+			?>
+			<a href="<?php echo $link; ?>">ajouter un commentaire ?</a>
+
 
 		</section>
 
@@ -151,7 +191,21 @@
 						<p><?php echo $answer["score"]; ?></p>
 					</div>
 				</div>
+
+
+
+
+				<?php 
+					//editer une réponse si la réponse est à utilisateur
+					if ($connect && equalUser($my_user["id_user"], $answer["id_user"])): 
+					//$link = goUpdateAnswerLink($my_user["id_user"], $id_answer);
+				?>
+					<a href="<?php //echo $link; ?>">éditer ma réponse ?</a>
+				<?php endif; ?>
 				
+
+
+
 				<?php 
 					// boucle de commentraires
 					$comments = selectComments($answer["id_answer"], "answer");
@@ -182,7 +236,28 @@
 					</div>
 				<?php endforeach; ?>
 
+
+
+				<?php
+					// lien vers creation commmentaire
+					$link = "index.php?page=signup";
+					if ($connect) $link = goCommentLink($my_user["id_user"], $answer["id_answer"], "answer"); 
+				?>
+				<a href="<?php echo $link; ?>">ajouter un commentaire ?</a>
+
+
+
 			</section>
 		<?php endforeach; ?>
+
+
+		<?php
+			// lien vers creation réponse
+			$link = "index.php?page=signup";
+			if ($connect) $link = goAnswerLink($my_user["id_user"], $id_question);
+		?>
+		<a href="<?php echo $link; ?>">ajouter une réponse ?</a>
+
+
 
 	</main>

@@ -1,16 +1,24 @@
 <?php
 
-	//fonction pour créer un array qui va récupérer
 	$id_user = 0;
 	if(empty($_GET['id_user'])) {
-		die('404');
+		goHome();
 	} else {
 
 		$id_user = $_GET['id_user'];
 	}
 
-	$user = selectUserDetail($id_user);
 
+	$my_user = array();
+	$connect = userIsLogged();
+
+	// si session ouverte
+	if ($connect) $my_user = $_SESSION["user"];
+
+
+
+
+	$user = selectUserDetail($id_user);
 	$linksUser = selectLinkUser($id_user);
 
 
@@ -40,14 +48,24 @@
 			</div>
 
 			<div class="infosUserTer">
-				<p><?php echo $user['dateCreated']; ?></p>
+
+				<?php
+					$dateCreated = $user['dateCreated'];
+					$date = "membre depuis ".getBetweenDate($dateCreated, "NOW");
+				?>
+
+				<p><?php echo $date; ?></p>
 				<p><?php echo $user['TotalQuestions']; ?></p>
 				<p><?php echo $user['TotalAnswers']; ?></p>	
 			</div>
 
-			<form class="button">
-				<a href="index.php?page=editUser&id_user=<?php echo $id_user; ?>">Editer le profil</a>
-			</form>
+
+
+			<div class="button">
+				<?php if ($connect && equalUser($my_user["id_user"], $id_user)): ?>
+					<a href="<?php echo goUpdateUserLink($my_user['id_user']); ?>">Editer le profil</a>
+				<?php endif; ?>
+			</div>
 		</section>
 		
 	</main>

@@ -1,7 +1,14 @@
 <?php 
 	
-	$questions = selectQuestionsHome();
+	$my_user = array();
+	$connect = userIsLogged();
 
+	// si session ouverte
+	if ($connect) $my_user = $_SESSION["user"];
+
+
+
+	$questions = selectQuestionsHome();
 	$date = "";
 ?>
 
@@ -16,12 +23,9 @@
 			// vérifie la date question
 			$dateCreated = $question["dateCreated"];
 			$dateModified = $question["dateModified"];
-			if (getBetweenDate($dateCreated, $dateModified) == "match")
-			{
-				$date = "posée il y a ".getBetweenDate($dateCreated, "NOW");
-			
+			if (getBetweenDate($dateCreated, $dateModified) == "match") {
+				$date = "posée il y a ".getBetweenDate($dateCreated, "NOW");		
 			} else {
-				
 				$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
 			}
 		?>
@@ -56,12 +60,20 @@
 				?>
 
 					<div class="tags_questions">
-						<a href="<?php echo $tag["id_tag"]; ?>">
-							<?php echo $tag["tag_name"]; ?>
-						</a>
+						<p><?php echo $tag["tag_name"]; ?></p>
 					</div>
 
 				<?php endforeach; ?>
+
+
+				<?php 
+					//editer une question si la question est à utilisateur
+					if ($connect && equalUser($my_user["id_user"], $question["id_user"])): 
+					$link = goUpdateQuestionLink($my_user["id_user"], $id_question);
+				?>
+					<a href="<?php echo $link; ?>">éditer ma question ?</a>
+				<?php endif; ?>
+				
 
 			</section>
 

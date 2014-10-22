@@ -6,8 +6,20 @@
 	$id_user 		= 0;
 	$content		= "";
 
-	if(empty($_GET['id_user']) && empty($_GET['id_question'])) {
-		die('404');
+
+
+	$my_user = array();
+	$connect = userIsLogged();
+
+	// si session ouverte
+	if ($connect) $my_user = $_SESSION["user"];
+
+	
+
+
+
+	if(empty($_GET['id_user']) && empty($_GET['id_question']) || !$connect) {
+		goHome();
 	} else {
 
 		$id_user 		= $_GET['id_user'];
@@ -22,16 +34,14 @@
 		if(strlen($content) < 2) {
 			$errors[] = "Veuillez entrer une réponse à la question, merci.";
 		}
-	}
+	
 
-	if(empty($errors)){
+		if(empty($errors)){
 
-		insertAnswer($id_question, $id_user, $content);
-		
+			insertAnswer($id_question, $id_user, $content);
+			
+		}
 	}
-		
-	//print_r($content);
-	//die();
 	
 ?>
 	

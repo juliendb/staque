@@ -1,9 +1,18 @@
 <?php
-	
+		
+
+	$my_user = array();
+	$connect = userIsLogged();
+
+	// si session ouverte
+	if ($connect) $my_user = $_SESSION["user"];
+
+
+
+
 	$id_user = 0;
-	if (empty($_GET['id_user']))
-	{
-		die("404");
+	if (empty($_GET['id_user']) || !$connect) {
+		goHome();
 	
 	} else {
 		$id_user = $_GET['id_user'];
@@ -29,11 +38,20 @@
 		// boucle tags
 		for($i=0; $i<5; $i++)
 		{
-			if (!empty($tags[$i])) $tags[$i] = $_POST[('tag'.$i)];
+			if (!empty($_POST[('tag'.$i)])) $tags[] = $_POST[('tag'.$i)];
 			print_r($tags);
 
 			// insere tags et remplis l'arrau
-			if (selectIDTag($tags[$i])) echo "toto";
+			if (selectIDTag($tags[$i])) 
+			{
+				//insertTagsQuestion($);
+
+			} else {
+				insertNewTag();
+
+
+			}
+
 			//if ($tags[$i] != "") $listTags[] = insertNewTag();
 		}
 
@@ -70,7 +88,7 @@
 				?>
 					<div>
 						<p><?php echo "tag ".($i+1); ?></p>
-						<input type="text" name="<?php 'tag'.$i; ?>" value="<?php echo $tags[$i]; ?>">
+						<input type="text" name="<?php 'tag'.$i; ?>" value="<?php echo (!empty($tags[$i]) ) ? $tags[$i] : ""; ?>">
 					</div>
 
 				<?php endfor; ?>

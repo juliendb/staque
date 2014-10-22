@@ -15,6 +15,10 @@
 		showPage();
 	}
 
+	function logout(){
+		showPage();
+	}
+
 
 
 	// affiche questions home et autres
@@ -30,12 +34,16 @@
 		showPage();
 	}
 
+	function questionEdit(){
+		showPage();
+	}
+
+
 
 	// affiche page user et autres
 	function userDetails(){
 		showPage();
 	}
-
 
 	function userEdit(){
 		showPage();
@@ -45,13 +53,24 @@
 		showPage();
 	}
 
+
+
+	// commentaires
 	function commentsCreate(){
 		showPage();
 	}
 
+
+	// réponses
 	function answersCreate(){
 		showPage();
 	}
+
+	function answersEdit(){
+		showPage();
+	}
+
+
 
 
 	// Fonctions include de pages

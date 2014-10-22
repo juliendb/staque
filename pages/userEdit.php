@@ -14,6 +14,11 @@
 
 
 
+	$my_user = array();
+	$connect = userIsLogged();
+
+	// si session ouverte
+	if ($connect) $my_user = $_SESSION["user"];
 
 
 
@@ -21,8 +26,8 @@
 
 	//fonction pour créer un array qui va récupérer l'id de user
 	$id_user = 0;
-	if(empty($_GET['id_user'])) {
-		die('404');
+	if(empty($_GET['id_user']) || !$connect) {
+		goHome();
 	} else {
 
 		$id_user = $_GET['id_user'];
@@ -43,6 +48,17 @@
 
 
 
+	$img_profile = $user["img_profile"];
+
+	// va chercher le lien dans l'url
+	if (!empty($_GET['img_profile']))
+	{
+		$img_profile = $_GET['img_profile'];
+	}
+
+
+
+
 
 
 	//est-ce que le form a été soumis
@@ -55,6 +71,7 @@
 		$language 		= $_POST['language'];
 		$job 			= $_POST['job']; 
 		$country 		= $_POST['country'];
+		
 
 
 		/*
@@ -72,20 +89,59 @@
 		}
 
 
-	
-
 
 		//si le form est valide, envoit le message
-		if(empty($errors)){
-	
-		
+		if(empty($errors))
+		{
 			updateUserDetail($id_user, $user_name, $email, $language, $job, $country, $img_profile);
 		}
-	} 
+	}
 
 
 
 
+
+
+
+
+	if (!empty($_FILES) )
+	{	
+		if ($_FILES["image"]["error"] == 0)
+		{
+			// valider taille
+			$accepted = array("image/jpeg","image/jpg","image/gif","image/png");
+
+			$tmp_name = $_FILES['image']['tmp_name'];
+
+			$parts = explode(".",  $_FILES['image']['name']);
+			$extention = end($parts);
+
+			$filename = uniqid()."_".$my_user["id_user"]. "." .$extention;
+			$destination = "uploads/" .$filename;
+
+			$finfo = finfo_open(FILEINFO_MIME_TYPE);
+			$mime = finfo_file($finfo, $tmp_name);
+			finfo_close($finfo);
+
+			if (in_array($mime, $accepted))
+			{
+				move_uploaded_file($tmp_name, $destination);
+
+
+
+				// manipulation de l'image
+				// avec simple image
+				require("inc/SimpleImage.php");
+
+				$img = new abeautifulsite\SimpleImage($destination);
+				$img->thumbnail(80,80)->save("uploads/thumbs/".$filename);
+
+				$img_profile = "uploads/thumbs/".$filename;
+				$link = goUpdateUserLink($id_user)."&img_profile=".$img_profile;
+				header("Location: $link");
+			}
+		}
+	}
 
 
 ?>
@@ -93,17 +149,20 @@
 	<main class="container">
 
 		<section id="userEdit">
-			<form = class="editProfile" method="POST">
 
+			<form enctype="multipart/form-data" method="POST">
 				<div class='imageUser'>
-					<img src="<?php //echo $user['img_profile']; ?>" >
+					<img src="<?php echo $img_profile; ?>" >
 
 					<label for="image">Image à télécharger</label><br />
 					<input type="file" name="image" id="image" />
+
+					<input type="submit" value="Télécharger"/>
 				</div>
+			</form>
 
-				<input type="submit" value="Télécharger" />
 
+			<form = class="editProfile" method="POST">
 				<div class="form-group">
 					<label for="user_name">Entrez votre nom</label>
 					<input type="text" name="user_name" id="user_name" value="<?php echo $user['user_name']; ?>" />

@@ -7,8 +7,19 @@
 	$type_comment 	= "";
 	$content		= "";
 
-	if(empty($_GET['id_user']) && empty($_GET['id_rubric']) && empty($_GET['type_comment'])) {
-		die('404');
+
+
+	$my_user = array();
+	$connect = userIsLogged();
+
+	// si session ouverte
+	if ($connect) $my_user = $_SESSION["user"];
+
+
+
+
+	if(empty($_GET['id_user']) && empty($_GET['id_rubric']) && empty($_GET['type_comment']) || !$connect) {
+		goHome();
 	} else {
 
 		$id_user 		= $_GET['id_user'];
@@ -23,12 +34,11 @@
 		if(strlen($content) < 2) {
 			$errors[] = "Veuillez entrer un commentaire, merci.";
 		}
-	}
 
-	if(empty($errors)){
+		if(empty($errors)) {
 
-		insertComment($id_rubric, $id_user, $type_comment, $content);
-		
+			insertComment($id_rubric, $id_user, $type_comment, $content);
+		}
 	}
 		
 	//print_r($content);
@@ -41,8 +51,7 @@
 		<section id="comment">
 			<form class="editComment" method="POST">
 				<label for="content">Entrez votre commentaire</label>
-				<textarea name="content" id="content">
-				</textarea>
+				<textarea name="content" id="content"></textarea>
 
 				<input type="submit" id="valider" value="Valider" />
 
