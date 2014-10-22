@@ -159,14 +159,35 @@ header {
 
 /* Menu*/
 
+nav {
+	float: right;
+	display: inline-block;
+}
+
 nav a{
 	text-decoration: none;
 	font-family: 'ubuntu';
 	font-weight: 400;
-	font-size: 18px;
-	margin: 50px 50px 0 0;
+	font-size: 13px;
+	letter-spacing: 0.15em ;
+	line-height: 89px;
+	margin: 0 20px 0 20px;
 	text-transform: uppercase;
 	color: #fff;
+
+}
+
+nav a:hover{
+	text-decoration: none;
+	font-family: 'ubuntu';
+	font-weight: 400;
+	font-size: 13px;
+	letter-spacing: 0.15em ;
+	line-height: 89px;
+	margin: 0 20px 0 20px;
+	text-transform: uppercase;
+	color: #fff;
+	border-bottom: 2px solid #42cc70;
 
 }
 
