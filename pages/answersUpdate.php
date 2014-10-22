@@ -36,7 +36,7 @@
 
 	}
 	
-	if (!empty($_POST)) {
+	if (!empty($_POST)  && $connect && equalUser($id_user, $my_user["id_user"])) {
 
 		$content = $_POST['content'];
 

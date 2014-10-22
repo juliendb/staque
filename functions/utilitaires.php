@@ -48,8 +48,8 @@
 		if ($diff_s >= 60 || $diff_i >= 1) $text = $diff_i." minute(s)";
 		if ($diff_i >= 60 || $diff_h >= 1) $text = $diff_h." heure(s)";
 		if ($diff_h >= 24 || $diff_d >= 1) $text = $diff_d." jour(s)";
-		if ($diff_m >= 1) $text = $diff_m." mois et ".$diff_d." jour(s)";
-		if ($diff_y >= 1) $text = $diff_y." an(s) et ".$diff_m." mois";
+		if ($diff_m >= 1) $text = $diff_m." mois";
+		if ($diff_y >= 1) $text = $diff_y." an(s)";
 
 		if ($text == "0 seconde(s)") $text = "match";
 

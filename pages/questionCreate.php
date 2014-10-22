@@ -26,15 +26,15 @@
 	$listTags = array();
 
 
-	$titleQuestion = "";
-	$contentQuestion = "";
+	$title = "";
+	$content = "";
 
 
 
-	if (!empty($_POST))
+	if (!empty($_POST) && $connect && equalUser($id_user, $my_user["id_user"]))
 	{
-		$titleQuestion 			= $_POST['titleQuestion'];
-		$contentQuestion 		= $_POST['contentQuestion'];
+		$title			= $_POST['title'];
+		$content 		= $_POST['content'];
 
 
 
@@ -46,35 +46,30 @@
 			{
 				if (selectIDTag($_POST[('tag'.$i)]))
 				{
-					$tags[] = selectIDTag($_POST[('tag'.$i)]);
+					$tag_name = selectIDTag($_POST[('tag'.$i)]);
+					$tags[] = $tag_name["tag_name"];
 					
 				} else {
+
+					insertNewTag($_POST[('tag'.$i)]);
 					$tags[] = $_POST[('tag'.$i)];
 				}
 			}
 		}
 
-		print_r($tags);
-
-
-		/*
-		// insere tags et remplis l'arrau
-		if (selectIDTag($key))
-		{
-			//insertTagsQuestion($);
-
-		} else {
-
-			//insertNewTag();
-		}
-
-			//if ($tags[$i] != "") $listTags[] = insertNewTag();
-
 
 		if (empty($errors) && !empty($tags))
 		{
+			$id_tags = array();
+			
+			foreach ($tags as $key)
+			{
+				$id_tag = selectIDTag($key);
+				$id_tags[] = $id_tag;
+			}
 
-		}*/
+			insertQuestion($id_user, $title, $content, $id_tags);
+		}
 	}
 
 
@@ -84,15 +79,15 @@
 		<form id="createQuestion" method="POST" novalidate>
 			
 			<div class="form-group">
-				<label for="titleQuestion">Entrez le nom de votre question</label>
-				<input type="text" name="titleQuestion" id="titleQuestion" value="<?php echo $titleQuestion; ?>" />
+				<label for="title">Entrez le nom de votre question</label>
+				<input type="text" name="title" id="title" value="<?php echo $title; ?>" />
 			</div>
 
 			<div class="form-group">
-				<label for="contentQuestion">Saisissez le contenu de votre question</label>
-				<textarea name="contentQuestion" id="contentQuestion">
-					<?php echo $contentQuestion; ?>
-				</textarea>  
+				<label for="content">Saisissez le contenu de votre question</label>
+				<textarea name="content" id="contentEdit" rows="10" cols="40">
+					<?php echo $content; ?>
+				</textarea>
 			</div>
 			
 			

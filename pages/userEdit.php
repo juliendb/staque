@@ -62,7 +62,7 @@
 
 
 	//est-ce que le form a été soumis
-	if (!empty($_POST)){
+	if (!empty($_POST) && $connect && equalUser($id_user, $my_user["id_user"])){
 
 
 		//récupère les données dans mes variables
@@ -104,7 +104,7 @@
 
 
 
-	if (!empty($_FILES) )
+	if (!empty($_FILES)  && $connect && equalUser($id_user, $my_user["id_user"]))
 	{	
 		if ($_FILES["image"]["error"] == 0)
 		{

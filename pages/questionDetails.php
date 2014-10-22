@@ -52,9 +52,7 @@
 			</div>
 
 			<div class="content-question">
-				<p>
-					<?php echo $content; ?>
-				</p>
+				<?php echo $content; ?>
 			</div>
 			
 

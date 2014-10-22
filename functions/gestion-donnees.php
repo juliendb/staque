@@ -708,7 +708,7 @@
 	// création question detail
 
 	//insertQuestion(1, "css", "je suis là");
-	function insertQuestion($id_user, $title, $content)
+	function insertQuestion($id_user, $title, $content, $id_tags)
 	{
 		global $dbh;
 
@@ -725,7 +725,15 @@
 		if ($stmt->execute())
 		{	
 			$lastID = $dbh->lastInsertId();
-			header("Location: goQuestionLink($lastID)");
+			$link = goQuestionLink($lastID);
+
+			foreach ($id_tags as $key) 
+			{
+				insertTagsQuestion($lastID, $key["id_tag"]);
+			}
+
+
+			header("Location: $link");
 		}
 	}
 
@@ -752,8 +760,8 @@
 		// si execute retourne à la page en question
 		if ($stmt->execute())
 		{
-			// on verra ce que l'on affiche
-			//goHome();
+			$link = goQuestionLink($id_question);
+			header("Location: $link");
 		}
 	}
 
@@ -833,8 +841,8 @@
 		// si execute retourne à la page en question
 		if ($stmt->execute())
 		{
-			// on verra ce que l'on affiche
-			//goHome();
+			$link = goQuestionLink($id_question);
+			header("Location: $link");
 		}
 	}
 
@@ -868,12 +876,18 @@
 		// si execute retourne à la page en question
 		if ($stmt->execute())
 		{
-			// on verra ce que l'on affiche
-			//goHome();
+			$link = goQuestionLink($id_question);
+			header("Location: $link");
 		}
 	}
 
 
+
+
+
+
+
+	// il existe pas et on s'en fout totalement de ce truc bidule !
 
 
 
