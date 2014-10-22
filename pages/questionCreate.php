@@ -19,6 +19,8 @@
 	}
 
 
+	$numb_tags = 5;
+
 	$tags = array();
 	$errors = array();
 	$listTags = array();
@@ -35,31 +37,44 @@
 		$contentQuestion 		= $_POST['contentQuestion'];
 
 
+
+
 		// boucle tags
-		for($i=0; $i<5; $i++)
+		for($i=0; $i<$numb_tags; $i++)
 		{
-			if (!empty($_POST[('tag'.$i)])) $tags[] = $_POST[('tag'.$i)];
-			print_r($tags);
-
-			// insere tags et remplis l'arrau
-			if (selectIDTag($tags[$i])) 
+			if (!empty($_POST[('tag'.$i)]))
 			{
-				//insertTagsQuestion($);
-
-			} else {
-				insertNewTag();
-
-
+				if (selectIDTag($_POST[('tag'.$i)]))
+				{
+					$tags[] = selectIDTag($_POST[('tag'.$i)]);
+					
+				} else {
+					$tags[] = $_POST[('tag'.$i)];
+				}
 			}
+		}
+
+		print_r($tags);
+
+
+		/*
+		// insere tags et remplis l'arrau
+		if (selectIDTag($key))
+		{
+			//insertTagsQuestion($);
+
+		} else {
+
+			//insertNewTag();
+		}
 
 			//if ($tags[$i] != "") $listTags[] = insertNewTag();
-		}
 
 
-		if (empty($errors))
+		if (empty($errors) && !empty($tags))
 		{
 
-		}
+		}*/
 	}
 
 
@@ -84,11 +99,11 @@
 			<div class="form-group">
 				<?php
 
-					for($i=0; $i<5; $i++):
+					for($i=0; $i<$numb_tags; $i++):
 				?>
 					<div>
 						<p><?php echo "tag ".($i+1); ?></p>
-						<input type="text" name="<?php 'tag'.$i; ?>" value="<?php echo (!empty($tags[$i]) ) ? $tags[$i] : ""; ?>">
+						<input type="text" name="<?php echo ('tag'.$i); ?>" value="<?php echo (!empty($tags[$i]) ) ? $tags[$i] : ""; ?>">
 					</div>
 
 				<?php endfor; ?>
