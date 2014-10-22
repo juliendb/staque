@@ -38,6 +38,10 @@
 		showPage();
 	}
 
+	function questionUpdate(){
+		showPage();
+	}
+
 
 
 	// affiche page user et autres
@@ -66,9 +70,11 @@
 		showPage();
 	}
 
-	function answersEdit(){
+	function answersUpdate(){
 		showPage();
 	}
+
+
 
 
 
