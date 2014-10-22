@@ -198,9 +198,9 @@
 				<?php 
 					//editer une réponse si la réponse est à utilisateur
 					if ($connect && equalUser($my_user["id_user"], $answer["id_user"])): 
-					//$link = goUpdateAnswerLink($my_user["id_user"], $id_answer);
+					$link = goUpdateAnswerLink($my_user["id_user"], $answer['id_answer']);
 				?>
-					<a href="<?php //echo $link; ?>">éditer ma réponse ?</a>
+					<a href="<?php echo $link; ?>">éditer ma réponse ?</a>
 				<?php endif; ?>
 				
 

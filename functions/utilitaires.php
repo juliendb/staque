@@ -93,7 +93,7 @@
 
 	function goUpdateQuestionLink($id_user, $id_question)
 	{
-		return "index.php?page=questionEdit&id_user=".$id_user."&id_question=".$id_question;
+		return "index.php?page=questionUpdate&id_user=".$id_user."&id_question=".$id_question;
 	}
 
 
@@ -104,6 +104,11 @@
 	function goAnswerLink($id_user, $id_question)
 	{
 		return "index.php?page=answersCreate&id_user=".$id_user."&id_question=". $id_question;
+	}
+
+	function goUpdateAnswerLink($id_user, $id_answer)
+	{
+		return "index.php?page=answersUpdate&id_user=".$id_user."&id_answer=".$id_answer;
 	}
 
 

@@ -631,6 +631,31 @@
 
 
 
+	//selection le contenu seul s'une réponse
+	function selectAnswer($id_answer)
+	{
+		global $dbh;
+
+
+		$sql = "SELECT 	A.id_answer,
+						A.content,
+						A.dateCreated,
+						A.dateModified
+
+				FROM answers AS A
+				WHERE A.id_answer = :id_answer";
+				
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":id_answer", $id_answer);
+		$stmt->execute();
+		
+		//affiche
+		return $stmt->fetch();
+	}
+
+
+
 
 
 	// select commentaires en fonction de id_question ou id_reponse
