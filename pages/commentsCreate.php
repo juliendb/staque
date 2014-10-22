@@ -18,16 +18,18 @@
 
 
 
-	if(empty($_GET['id_user']) && empty($_GET['id_rubric']) && empty($_GET['type_comment']) || !$connect) {
+	if(empty($_GET['id_rubric']) && empty($_GET['type_comment']) || !$connect) {
 		goHome();
 	} else {
 
-		$id_user 		= $_GET['id_user'];
+		$id_user 		= $my_user['id_user'];
 		$id_rubric 		= $_GET['id_rubric'];
 		$type_comment	= $_GET['type_comment'];
 	}
 	
-	if (!empty($_POST) && $connect && equalUser($id_user, $my_user["id_user"])) {
+
+	
+	if (!empty($_POST)) {
 
 		$content = $_POST['content'];
 
@@ -51,7 +53,9 @@
 		<section id="comment">
 			<form class="editComment" method="POST">
 				<label for="content">Entrez votre commentaire</label>
-				<textarea name="content" id="content"></textarea>
+				<textarea name="content" id="contentEdit" rows="10" cols="40">
+					<?php echo $content; ?>
+				</textarea>
 
 				<input type="submit" id="valider" value="Valider" />
 

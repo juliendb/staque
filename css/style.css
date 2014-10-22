@@ -51,3 +51,60 @@ table {
 
 
 
+font-family: 'Ubuntu', sans-serif;
+font-family: 'Lato', sans-serif;
+
+
+
+
+/******* HEADER SUR TOUTE LES PAGES ********/
+
+
+#wrapper {
+	width: 100%;
+	text-align: center;
+	height: 60px;
+
+}
+
+.container {
+	margin: auto;
+	max-width: 1200px;
+	
+}
+
+
+
+
+
+#header #connection {
+	background: #ff5639;
+	top: 0;
+	right: 0;
+	height: 60px;
+
+}
+
+#logo {
+	float: left;
+	position:absolute;
+	background-image:url("../img/logo.png");
+	height:92px;
+	width: 141px;
+	top: 29px;
+}
+
+
+#mainHeader {
+	background: #271026;
+	height:280px;
+}
+
+#sign {
+	float:right;
+	margin-top: 15px;
+	font-family: 'ubuntu';
+	color:white;
+
+}
+>>>>>>> 06e96972ee8f46c2d0a7fb7bc0a6fc749ee9be90

@@ -19,11 +19,11 @@
 
 
 
-	if(empty($_GET['id_user']) || empty($_GET['id_answer'])|| !$connect) {
+	if(empty($_GET['id_answer']) || !$connect) {
 		goHome();
 	} else {
 
-		$id_user 		= $_GET['id_user'];
+		$id_user 		= $my_user['id_user'];
 		$id_answer 		= $_GET['id_answer'];
 
 
@@ -36,7 +36,7 @@
 
 	}
 	
-	if (!empty($_POST)  && $connect && equalUser($id_user, $my_user["id_user"])) {
+	if (!empty($_POST)) {
 
 		$content = $_POST['content'];
 
@@ -49,9 +49,6 @@
 			updateAnswer($id_question, $id_answer, $id_user, $content);
 		}
 	}
-		
-	//print_r($content);
-	//die();
 	
 ?>
 
@@ -61,9 +58,9 @@
 
 			<div class="form-group">
 				<label for="content">Modifier la réponse</label>
-				<textarea name="content" id="content">
+				<textarea name="content" id="contentEdit" rows="10" cols="40">
 					<?php echo $content; ?>
-				</textarea>  
+				</textarea>
 			</div>
 
 			<div class="form-group">

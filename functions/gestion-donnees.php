@@ -85,6 +85,13 @@
 			updateStatus($user["id_user"], "connected");
 			$_SESSION['user'] = $user;
 
+			
+			if (!empty($_SESSION['url']))
+			{
+				$redirection = $_SESSION['url'];
+				header("Location: $redirection");
+			}
+
 		}
 	}
 

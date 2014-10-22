@@ -11,11 +11,11 @@
 
 
 	$id_user = 0;
-	if (empty($_GET['id_user']) || !$connect) {
+	if (!$connect) {
 		goHome();
 	
 	} else {
-		$id_user = $_GET['id_user'];
+		$id_user = $my_user['id_user'];
 	}
 
 
@@ -31,7 +31,7 @@
 
 
 
-	if (!empty($_POST) && $connect && equalUser($id_user, $my_user["id_user"]))
+	if (!empty($_POST))
 	{
 		$title			= $_POST['title'];
 		$content 		= $_POST['content'];

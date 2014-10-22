@@ -1,5 +1,8 @@
 <?php 
 	
+	$_SESSION['url'] = "index.php?page=questionsHome";
+
+
 	$my_user = array();
 	$connect = userIsLogged();
 
@@ -69,7 +72,7 @@
 				<?php 
 					//editer une question si la question est à utilisateur
 					if ($connect && equalUser($my_user["id_user"], $question["id_user"])): 
-					$link = goUpdateQuestionLink($my_user["id_user"], $id_question);
+					$link = goUpdateQuestionLink($id_question);
 				?>
 					<a href="<?php echo $link; ?>">éditer ma question ?</a>
 				<?php endif; ?>

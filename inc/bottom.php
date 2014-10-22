@@ -14,5 +14,7 @@
 		CKEDITOR.replace('contentEdit');
 	</script>  
 
+</div>
+
 </body>
 </html>

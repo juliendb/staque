@@ -1,5 +1,6 @@
 <?php
 	
+
 	$id_question = 0;
 	if (empty($_GET['id_question']))
 	{
@@ -7,6 +8,8 @@
 	
 	} else {
 		$id_question = $_GET['id_question'];
+
+		$_SESSION['url'] = goQuestionLink($id_question);
 	}
 
 
@@ -196,7 +199,7 @@
 				<?php 
 					//editer une réponse si la réponse est à utilisateur
 					if ($connect && equalUser($my_user["id_user"], $answer["id_user"])): 
-					$link = goUpdateAnswerLink($my_user["id_user"], $answer['id_answer']);
+					$link = goUpdateAnswerLink($answer['id_answer']);
 				?>
 					<a href="<?php echo $link; ?>">éditer ma réponse ?</a>
 				<?php endif; ?>
@@ -252,7 +255,7 @@
 		<?php
 			// lien vers creation réponse
 			$link = "index.php?page=signup";
-			if ($connect) $link = goAnswerLink($my_user["id_user"], $id_question);
+			if ($connect) $link = goAnswerLink($id_question);
 		?>
 		<a href="<?php echo $link; ?>">ajouter une réponse ?</a>
 

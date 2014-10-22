@@ -1,6 +1,4 @@
 <?php
-	
-
 
 	$errors = array();
 
@@ -26,15 +24,14 @@
 
 	//fonction pour créer un array qui va récupérer l'id de user
 	$id_user = 0;
-	if(empty($_GET['id_user']) || !$connect) {
+	if(!$connect) {
 		goHome();
 	} else {
 
-		$id_user = $_GET['id_user'];
+		$id_user = $my_user['id_user'];
 	}
 
 	$user = selectUserDetail($id_user);
-
 	$linksUser = selectLinkUser($id_user);
 
 
@@ -62,7 +59,7 @@
 
 
 	//est-ce que le form a été soumis
-	if (!empty($_POST) && $connect && equalUser($id_user, $my_user["id_user"])){
+	if (!empty($_POST)){
 
 
 		//récupère les données dans mes variables
@@ -78,7 +75,7 @@
 		*	 début de la validation
 		*/
 		//user_name est valide et si il n'existe pas
-		if ( isValidName($user_name) ) {
+		if (isValidName($user_name) ) {
 			$errors[] = isValidName($user_name);
 		}
 	
@@ -104,7 +101,7 @@
 
 
 
-	if (!empty($_FILES)  && $connect && equalUser($id_user, $my_user["id_user"]))
+	if (!empty($_FILES))
 	{	
 		if ($_FILES["image"]["error"] == 0)
 		{
