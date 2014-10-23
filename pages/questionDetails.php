@@ -151,7 +151,7 @@
 		</div>
 	</section>
 
-
+	<h1> Telles sont les réponses</h1>	
 		
 		<?php 
 
@@ -173,8 +173,10 @@
 			}
 
 		?>
+			
 
-			<section id="detailReponses">	
+			<section id="detailReponses">
+
 				<div class="vote">
 					
 					<?php
@@ -182,9 +184,9 @@
 						$link = "id_answer=".$answer["id_answer"]."&id_userAnswer=".$id_user;
 					?>
 
-					<a href="<?php echo "index.php?page=votes&".$link."&vote_type=1"; ?>">+</a>
+					<a class="plus" href="<?php echo "index.php?page=votes&".$link."&vote_type=1"; ?>">+</a>
 					<p><?php echo calculVote($answer["id_answer"]); ?></p>
-					<a href="<?php echo "index.php?page=votes&".$link."&vote_type=0"; ?>">-</a>
+					<a class="moins" href="<?php echo "index.php?page=votes&".$link."&vote_type=0"; ?>">-</a>
 				</div>
 
 				<p><?php echo $answer["content"]; ?></p>
