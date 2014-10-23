@@ -28,16 +28,16 @@
 				<div id="sign">
 					<form id="search">
 						<input type="text" value="">
-						<input type="submit" value="">
+						<div></div>
 					</form>
 
 					<?php if (!$connect): ?>
 
-						<a href="<?php echo $link.'signup'; ?>">s'inscrire</a>
+						<a id="signup" href="<?php echo $link.'signup'; ?>">s'inscrire</a>
 
 						
 						<div class="pictohead"></div> 
-						<a href="<?php echo $link.'login'; ?>">se connecter</a>
+						<a id="connect" href="<?php echo $link.'login'; ?>">se connecter</a>
 					<?php endif; ?>
 
 					<?php if ($connect): ?>

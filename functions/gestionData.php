@@ -185,7 +185,7 @@
 				FROM users U, questions Q				
 				WHERE U.id_user = Q.id_user
 				AND Q.id_question = :id_question
-				ORDER BY Q.dateModified DESC";
+				ORDER BY Q.dateModified ASC";
 
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindValue(":id_question", $id_question);
@@ -222,7 +222,7 @@
 				FROM users AS U, answers AS A
 				WHERE U.id_user = A.id_user
 				AND A.id_question = :id_question
-				ORDER BY A.dateCreated DESC
+				ORDER BY A.dateCreated ASC
 				LIMIT 6";
 
 		$stmt = $dbh->prepare($sql);
@@ -286,7 +286,7 @@
 				WHERE U.id_user = C.id_user
 				AND C.id_rubric = :id_rubric
 				AND C.type_comment = :type_comment
-				ORDER BY C.dateCreated DESC
+				ORDER BY C.dateCreated ASC
 				LIMIT 3";
 
 		$stmt = $dbh->prepare($sql);
@@ -544,9 +544,8 @@
 	{
 		global $dbh;
 
-
 		$sql = "UPDATE users
-				SET score += :score
+				SET score = score+:score
 				WHERE id_user = :id_user";
 
 
@@ -634,10 +633,6 @@
 				updateScore($id_user, 1);
 				updateScore($id_userAnswer, 5);
 			}
-
-			// redirige vers page question
-			$redirection = $_SESSION['url'];
-			header("Location: $redirection");
 		}
 	}
 	

@@ -13,6 +13,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu:400' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic' rel='stylesheet' type='text/css'>
 	
+	<link rel="stylesheet" href="css/jquery-ui.min.css">	
 	<link href='css/style.css' rel='stylesheet' type='text/css'>
 </head>
 <body>

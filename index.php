@@ -5,8 +5,9 @@
 	
 
 	// appel de fonctions utiles à php
-	include("functions/gestion-donnees.php");
-	include("functions/gestion-security.php");
+	include("functions/gestionUsers.php");
+	include("functions/gestionData.php");
+	include("functions/gestionSecurity.php");
 	include("functions/utilitaires.php");
 	include("functions/verified-form.php");
 
