@@ -18,11 +18,11 @@
 
 
 
-	if(empty($_GET['id_user']) && empty($_GET['id_question']) || !$connect) {
+	if(empty($_GET['id_question']) || !$connect) {
 		goHome();
 	} else {
 
-		$id_user 		= $_GET['id_user'];
+		$id_user 		= $my_user['id_user'];
 		$id_question 	= $_GET['id_question'];
 	}
 	
@@ -50,7 +50,9 @@
 		<section class="answers">
 			<form class="editAnswer" method="POST">
 				<label for="content">Entrez votre réponse</label>
-				<textarea name="content" id="content">
+
+				<textarea name="content" id="contentEdit" rows="10" cols="40">
+					<?php echo $content; ?>
 				</textarea>
 
 				<input type="submit" id="valider" value="Valider" />

@@ -5,3 +5,6 @@
 	if (function_exists($page)){
 		call_user_func($page);	
 	}
+
+
+	$_SESSION['url'] = "index.php?page=home";

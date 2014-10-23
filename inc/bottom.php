@@ -8,6 +8,13 @@
 	<script src="js/jquery-min.js"></script>
 	<script src="ckeditor/ckeditor.js"></script>
 	<script src="js/script.js"></script>
+
+
+	<script>
+		CKEDITOR.replace('contentEdit');
+	</script>  
+
 </div>
+
 </body>
 </html>

@@ -48,8 +48,8 @@
 		if ($diff_s >= 60 || $diff_i >= 1) $text = $diff_i." minute(s)";
 		if ($diff_i >= 60 || $diff_h >= 1) $text = $diff_h." heure(s)";
 		if ($diff_h >= 24 || $diff_d >= 1) $text = $diff_d." jour(s)";
-		if ($diff_m >= 1) $text = $diff_m." mois et ".$diff_d." jour(s)";
-		if ($diff_y >= 1) $text = $diff_y." an(s) et ".$diff_m." mois";
+		if ($diff_m >= 1) $text = $diff_m." mois";
+		if ($diff_y >= 1) $text = $diff_y." an(s)";
 
 		if ($text == "0 seconde(s)") $text = "match";
 
@@ -76,9 +76,9 @@
 		return "index.php?page=userDetails&id_user=" . $id_user;
 	}
 
-	function goUpdateUserLink($id_user) 
+	function goUpdateUserLink() 
 	{
-		return "index.php?page=userEdit&id_user=" . $id_user;
+		return "index.php?page=userEdit";
 	}
 
 
@@ -91,9 +91,9 @@
 		return "index.php?page=questionDetails&id_question=" . $id_question;
 	}
 
-	function goUpdateQuestionLink($id_user, $id_question)
+	function goUpdateQuestionLink($id_question)
 	{
-		return "index.php?page=questionUpdate&id_user=".$id_user."&id_question=".$id_question;
+		return "index.php?page=questionUpdate&id_question=".$id_question;
 	}
 
 
@@ -101,14 +101,14 @@
 
 
 	// fonction go answer
-	function goAnswerLink($id_user, $id_question)
+	function goAnswerLink($id_question)
 	{
-		return "index.php?page=answersCreate&id_user=".$id_user."&id_question=". $id_question;
+		return "index.php?page=answersCreate&id_question=". $id_question;
 	}
 
-	function goUpdateAnswerLink($id_user, $id_answer)
+	function goUpdateAnswerLink($id_answer)
 	{
-		return "index.php?page=answersUpdate&id_user=".$id_user."&id_answer=".$id_answer;
+		return "index.php?page=answersUpdate&id_answer=".$id_answer;
 	}
 
 
@@ -116,8 +116,8 @@
 
 
 	// fonction go comment
-	function goCommentLink($id_user, $id_rubric, $type_comment)
+	function goCommentLink($id_rubric, $type_comment)
 	{
-		$text = "id_user=".$id_user."&id_rubric=".$id_rubric."&type_comment=".$type_comment;
+		$text = "&id_rubric=".$id_rubric."&type_comment=".$type_comment;
 		return "index.php?page=commentsCreate&" . $text;
 	}

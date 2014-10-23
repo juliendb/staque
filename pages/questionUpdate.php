@@ -1,12 +1,14 @@
 <?php
 
 	$errors = array();
+	$question = array();
 
 	//fonction pour créer un array qui va récupérer l'id de user
 	$id_user 		= 0;
 	$id_question	= 0;
 	$title 			= "";
 	$content		= "";
+
 
 
 
@@ -19,19 +21,22 @@
 
 
 
-	if(empty($_GET['id_user']) || empty($_GET['id_question']) || !$connect) {
+	if(empty($_GET['id_question']) || !$connect) {
 		goHome();
 	} else {
 
-		$id_user 		= $_GET['id_user'];
+		$id_user 		= $my_user['id_user'];
 		$id_question 	= $_GET['id_question'];
 
 		// va récupérer les données dans la table sql
 		$question = selectQuestion($id_question);
 
+
 		$title 			= $question['title'];
 		$content		= $question['content'];
 
+		// 
+		goHome();
 
 	}
 	
@@ -50,9 +55,6 @@
 		}
 	}
 		
-	//print_r($content);
-	//die();
-	
 ?>
 
 	<main class="container">
@@ -64,9 +66,9 @@
 
 			<div class="form-group">
 				<label for="content">Modifier la question</label>
-				<textarea name="content" id="content">
+				<textarea name="content" id="contentEdit" rows="10" cols="40">
 					<?php echo $content; ?>
-				</textarea>  
+				</textarea>
 			</div>
 
 			<div class="form-group">

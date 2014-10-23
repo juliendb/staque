@@ -10,14 +10,14 @@
 
 
 	// change lien en fonction de si on est connecter
-	if ($connect) $askQuestion = "questionCreate&id_user=".$my_user["id_user"];
+	if ($connect) $askQuestion = "questionCreate";
 	if (!$connect) $askQuestion = "signup";
 
 
 	$members = selectTotalMembers();
 ?>
 	
-
+	
 
 	<header id="header">
 		<div id="connection" >
@@ -32,7 +32,10 @@
 					</form>
 
 					<?php if (!$connect): ?>
+
 						<a href="<?php echo $link.'signup'; ?>">s'inscrire</a>
+
+						
 						<div class="pictohead"></div> 
 						<a href="<?php echo $link.'login'; ?>">se connecter</a>
 					<?php endif; ?>
@@ -50,6 +53,10 @@
 
 		<div id="mainHeader">
 			<div class="container">
+
+				<div id="help">
+					<a href=""></a>
+				</div>
 			
 				<div id="askQuestion">
 					<a href="<?php echo $link.$askQuestion; ?>">Poser une question</a>

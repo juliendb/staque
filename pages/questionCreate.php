@@ -11,54 +11,64 @@
 
 
 	$id_user = 0;
-	if (empty($_GET['id_user']) || !$connect) {
+	if (!$connect) {
 		goHome();
 	
 	} else {
-		$id_user = $_GET['id_user'];
+		$id_user = $my_user['id_user'];
 	}
 
+
+	$numb_tags = 5;
 
 	$tags = array();
 	$errors = array();
 	$listTags = array();
 
 
-	$titleQuestion = "";
-	$contentQuestion = "";
+	$title = "";
+	$content = "";
 
 
 
 	if (!empty($_POST))
 	{
-		$titleQuestion 			= $_POST['titleQuestion'];
-		$contentQuestion 		= $_POST['contentQuestion'];
+		$title			= $_POST['title'];
+		$content 		= $_POST['content'];
+
+
 
 
 		// boucle tags
-		for($i=0; $i<5; $i++)
+		for($i=0; $i<$numb_tags; $i++)
 		{
-			if (!empty($_POST[('tag'.$i)])) $tags[] = $_POST[('tag'.$i)];
-			print_r($tags);
-
-			// insere tags et remplis l'arrau
-			if (selectIDTag($tags[$i])) 
+			if (!empty($_POST[('tag'.$i)]))
 			{
-				//insertTagsQuestion($);
+				if (selectIDTag($_POST[('tag'.$i)]))
+				{
+					$tag_name = selectIDTag($_POST[('tag'.$i)]);
+					$tags[] = $tag_name["tag_name"];
+					
+				} else {
 
-			} else {
-				insertNewTag();
-
-
+					insertNewTag($_POST[('tag'.$i)]);
+					$tags[] = $_POST[('tag'.$i)];
+				}
 			}
-
-			//if ($tags[$i] != "") $listTags[] = insertNewTag();
 		}
 
 
-		if (empty($errors))
+		if (empty($errors) && !empty($tags))
 		{
+			$id_tags = array();
+			
+			foreach ($tags as $key)
+			{
+				$id_tag = selectIDTag($key);
+				$id_tags[] = $id_tag;
+			}
 
+			insertQuestion($id_user, $title, $content, $id_tags);
 		}
 	}
 
@@ -69,26 +79,26 @@
 		<form id="createQuestion" method="POST" novalidate>
 			
 			<div class="form-group">
-				<label for="titleQuestion">Entrez le nom de votre question</label>
-				<input type="text" name="titleQuestion" id="titleQuestion" value="<?php echo $titleQuestion; ?>" />
+				<label for="title">Entrez le nom de votre question</label>
+				<input type="text" name="title" id="title" value="<?php echo $title; ?>" />
 			</div>
 
 			<div class="form-group">
-				<label for="contentQuestion">Saisissez le contenu de votre question</label>
-				<textarea name="contentQuestion" id="contentQuestion">
-					<?php echo $contentQuestion; ?>
-				</textarea>  
+				<label for="content">Saisissez le contenu de votre question</label>
+				<textarea name="content" id="contentEdit" rows="10" cols="40">
+					<?php echo $content; ?>
+				</textarea>
 			</div>
 			
 			
 			<div class="form-group">
 				<?php
 
-					for($i=0; $i<5; $i++):
+					for($i=0; $i<$numb_tags; $i++):
 				?>
 					<div>
 						<p><?php echo "tag ".($i+1); ?></p>
-						<input type="text" name="<?php 'tag'.$i; ?>" value="<?php echo (!empty($tags[$i]) ) ? $tags[$i] : ""; ?>">
+						<input type="text" name="<?php echo ('tag'.$i); ?>" value="<?php echo (!empty($tags[$i]) ) ? $tags[$i] : ""; ?>">
 					</div>
 
 				<?php endfor; ?>
