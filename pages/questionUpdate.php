@@ -20,7 +20,6 @@
 
 
 
-
 	if(empty($_GET['id_question']) || !$connect) {
 		goHome();
 	} else {
@@ -34,9 +33,6 @@
 
 		$title 			= $question['title'];
 		$content		= $question['content'];
-
-		// 
-		goHome();
 
 	}
 	
@@ -61,6 +57,7 @@
 
 		<form id="titleQuestion" method="POST" novalidate>
 
+			<label for="title">Modifier le titre question</label>
 			<input name="title" value="<?php echo $title; ?>">
 			
 

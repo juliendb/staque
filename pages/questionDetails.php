@@ -36,10 +36,10 @@
 	// vérifie la date question
 	$dateCreated = $question["dateCreated"];
 	$dateModified = $question["dateModified"];
-	if (getBetweenDate($dateCreated, $dateModified) == "match") {
-		$date = "posée il y a ".getBetweenDate($dateCreated, "NOW");
+	if (getBetweenDate($dateCreated, $dateModified) == "1 seconde(s)") {
+		$date = "posée il y a ".getBetweenDate($dateCreated);
 	} else {
-		$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
+		$date = "éditer il y a ".getBetweenDate($dateModified);
 	}
 
 
@@ -98,7 +98,7 @@
 			<?php 
 				//editer une question si la question est à utilisateur
 				if ($connect && equalUser($my_user["id_user"], $question["id_user"])): 
-				$link = goUpdateQuestionLink($my_user["id_user"], $question["id_question"]);
+				$link = goUpdateQuestionLink($question["id_question"]);
 			?>
 				<a href="<?php echo $link; ?>">éditer ma question ?</a>
 			<?php endif; ?>
@@ -108,6 +108,7 @@
 
 
 			<?php 
+
 				// boucle de commentraires
 				$comments = selectComments($id_question, "question");
 				foreach($comments as $comment):
@@ -119,10 +120,10 @@
 				// vérifie la date comment
 				$dateCreated = $comment["dateCreated"];
 				$dateModified = $comment["dateModified"];
-				if (getBetweenDate($dateCreated, $dateModified) == "match"){
-					$date = "répondu il y a ".getBetweenDate($dateCreated, "NOW");
+				if (getBetweenDate($dateCreated, $dateModified) == "1 seconde(s)"){
+					$date = "répondu il y a ".getBetweenDate($dateCreated);
 				} else {
-					$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
+					$date = "éditer il y a ".getBetweenDate($dateModified);
 				}
 
 			?>
@@ -140,9 +141,10 @@
 
 
 			<?php
+
 				// lien vers creation commmentaire
 				$link = "index.php?page=signup";
-				if ($connect) $link = goCommentLink($my_user["id_user"], $id_question, "question");
+				if ($connect) $link = goCommentLink($id_question, "question");
 			?>
 			<a href="<?php echo $link; ?>">ajouter un commentaire ?</a>
 
@@ -152,6 +154,7 @@
 
 		
 		<?php 
+
 			//boucle sur les réponses
 			$answers = selectAnswers($id_question);
 			foreach($answers as $answer): 
@@ -163,18 +166,25 @@
 			// vérifie la date answer
 			$dateCreated = $answer["dateCreated"];
 			$dateModified = $answer["dateModified"];
-			if (getBetweenDate($dateCreated, $dateModified) == "match"){
-				$date = "répondu il y a ".getBetweenDate($dateCreated, "NOW");
+			if (getBetweenDate($dateCreated, $dateModified) == "1 seconde(s)"){
+				$date = "répondu il y a ".getBetweenDate($dateCreated);
 			} else {
-				$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
+				$date = "éditer il y a ".getBetweenDate($dateModified);
 			}
 
 		?>
-			<section class="detail-reponses">
-					
+
+			<section class="detail-reponses">	
 				<div class="vote">
-					<a href="">+</a>
-					<a href="">-</a>
+					
+					<?php
+						// affiche tous les éléments dans get
+						$link = "id_answer=".$answer["id_answer"]."&id_userAnswer=".$id_user;
+					?>
+
+					<a href="<?php echo "index.php?page=votes&".$link."&vote_type=1"; ?>">+</a>
+					<p><?php echo calculVote($answer["id_answer"]); ?></p>
+					<a href="<?php echo "index.php?page=votes&".$link."&vote_type=0"; ?>">-</a>
 				</div>
 
 				<p><?php echo $answer["content"]; ?></p>
@@ -219,10 +229,10 @@
 					// vérifie la date comment
 					$dateCreated = $comment["dateCreated"];
 					$dateModified = $comment["dateModified"];
-					if (getBetweenDate($dateCreated, $dateModified) == "match"){
-						$date = "répondu il y a ".getBetweenDate($dateCreated, "NOW");
+					if (getBetweenDate($dateCreated, $dateModified) == "1 seconde(s)"){
+						$date = "répondu il y a ".getBetweenDate($dateCreated);
 					} else {
-						$date = "éditer il y a ".getBetweenDate($dateModified, "NOW");
+						$date = "éditer il y a ".getBetweenDate($dateModified);
 					}
 				?>
 					<div class="comment">
@@ -242,7 +252,7 @@
 				<?php
 					// lien vers creation commmentaire
 					$link = "index.php?page=signup";
-					if ($connect) $link = goCommentLink($my_user["id_user"], $answer["id_answer"], "answer"); 
+					if ($connect) $link = goCommentLink($answer["id_answer"], "answer"); 
 				?>
 				<a href="<?php echo $link; ?>">ajouter un commentaire ?</a>
 
