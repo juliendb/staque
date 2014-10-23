@@ -20,7 +20,6 @@
 
 		<h1>Les dernières questions</h1>
 
-
 		<?php 
 			// boucle sur questions
 			foreach ($questions as $question):
@@ -30,6 +29,7 @@
 			// vérifie la date question
 			$dateCreated = $question["dateCreated"];
 			$dateModified = $question["dateModified"];
+
 			if (getBetweenDate($dateCreated, $dateModified) == "1 seconde(s)") {
 				$date = "posée il y a ".getBetweenDate($dateCreated);		
 			} else {
@@ -51,7 +51,7 @@
 						</a>
 					</div>
 				
-				
+
 					<div class="infosUser">
 						<p><?php echo $date; ?></p>
 						<a href="<?php echo goUserLink($question['id_user']); ?>">
@@ -60,7 +60,6 @@
 						<p><?php echo $question["score"]; ?></p>
 					</div>
 				</div>
-
 
 				<?php
 					//boucle sur les tags
