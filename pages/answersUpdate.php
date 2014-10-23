@@ -30,8 +30,8 @@
 
 		// va récupérer les données dans la table sql
 		$answer = selectAnswer($id_answer);
-
 		$content = $answer['content'];
+		$id_question = $answer['id_question'];
 
 
 	}

@@ -19,7 +19,7 @@
 	<main class="container">
 
 		<h1>Les dernières questions</h1>
-		
+
 		<?php 
 			// boucle sur questions
 			foreach ($questions as $question):
@@ -29,10 +29,11 @@
 			// vérifie la date question
 			$dateCreated = $question["dateCreated"];
 			$dateModified = $question["dateModified"];
-			if (getBetweenDate($dateCreated, $dateModified) == "match") {
-				$date = "posée il y a : ".getBetweenDate($dateCreated, "NOW") . " | " ;		
+
+			if (getBetweenDate($dateCreated, $dateModified) == "1 seconde(s)") {
+				$date = "posée il y a ".getBetweenDate($dateCreated);		
 			} else {
-				$date = "éditer il y a : ".getBetweenDate($dateModified, "NOW");
+				$date = "éditer il y a ".getBetweenDate($dateModified);
 			}
 		?>
 
@@ -46,6 +47,7 @@
 						<?php echo $question["TotalReponses"]; ?>
 					</a>
 				</div>
+				
 				<div class="questionDetails">
 					<div class="title-question">
 						<a href="<?php echo $link_question; ?>">
@@ -53,7 +55,7 @@
 						</a>
 					</div>
 				
-				
+
 					<div class="infosUser">
 						<p><?php echo $date; ?></p>
 						<a href="<?php echo goUserLink($question['id_user']); ?>">

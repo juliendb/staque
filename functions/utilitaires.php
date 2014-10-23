@@ -16,7 +16,7 @@
 	// affiche la différence entre la date actuel et une autre date
 	/*$text = getBetweenDate("2014-10-18 19:16:24", "2014-10-18 19:16:24");
 	if ($text == "0 seconde(s)") echo "1";*/
-	function getBetweenDate($date1, $date2)
+	function getBetweenDate($date1, $date2 = "NOW")
 	{
 		date_default_timezone_set('Europe/Paris');
 		$date1 = date($date1);
@@ -45,13 +45,12 @@
 
 		// si il n'y a pas de différences
 		if ($diff_s < 60) $text = $diff_s." seconde(s)";
+		if ($diff_s = 0) $text = "1 seconde(s)";
 		if ($diff_s >= 60 || $diff_i >= 1) $text = $diff_i." minute(s)";
 		if ($diff_i >= 60 || $diff_h >= 1) $text = $diff_h." heure(s)";
 		if ($diff_h >= 24 || $diff_d >= 1) $text = $diff_d." jour(s)";
 		if ($diff_m >= 1) $text = $diff_m." mois";
 		if ($diff_y >= 1) $text = $diff_y." an(s)";
-
-		if ($text == "0 seconde(s)") $text = "match";
 
 		// retourne texte
 		return $text;
@@ -120,4 +119,18 @@
 	{
 		$text = "&id_rubric=".$id_rubric."&type_comment=".$type_comment;
 		return "index.php?page=commentsCreate&" . $text;
+	}
+
+
+
+
+
+	function calculVote($id_answer)
+	{
+		$list = array();
+
+		$list[] = selectCalculVote($id_answer , 0);
+		$list[] = selectCalculVote($id_answer , 1);
+
+		return ($list[0]*1)+($list[1]*-1);
 	}

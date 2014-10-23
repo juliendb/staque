@@ -42,9 +42,6 @@
 			insertComment($id_rubric, $id_user, $type_comment, $content);
 		}
 	}
-		
-	//print_r($content);
-	//die();
 	
 ?>
 	
