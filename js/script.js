@@ -16,7 +16,7 @@ script =
 
 
 	clickVote:function()
-	{/*
+	{
 		var _this = script;
 		var parent = $(this).parent();
 		
@@ -34,7 +34,7 @@ script =
 			}
 		});
 
-		return false;*/
+		return false;
 	}
 	
 }

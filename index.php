@@ -12,6 +12,9 @@
 	include("functions/verified-form.php");
 
 
+
+
+
 	//html 
 	include("inc/top.php");
 	include("inc/header.php");

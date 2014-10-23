@@ -72,7 +72,7 @@
 		</div>
 
 
-		<p><?php echo $members["0"]." utilisateurs" ?></p>
-		<p><?php echo $members["1"]." connectés" ?></p>
+		<p><?php //echo $members["0"]." utilisateurs" ?></p>
+		<p><?php //echo $members["1"]." connectés" ?></p>
 
 	</header>

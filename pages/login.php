@@ -50,16 +50,17 @@
 
 
 	<main class="container">
+
+	<h1>Connectez-vous à votre compte</h1>
 		<section class="formulaire">
 
-			<div class="title-question">
-				<h1>Connectez-vous à votre compte</h1>
-			</div>
+			
+				
+			
 
 			<form id="inscrition" method="POST" novalidate>
 				<div class="form-group">
-					<label for="pseudoUser">Entrez votre pseudo</label>
-					<input type="text" name="pseudoUser" id="pseudoUser" value="<?php echo $pseudoUser; ?>" />
+					<input type="text" name="pseudoUser" id="pseudoUser" placeholder="Votre pseudo" value="<?php echo $pseudoUser; ?>" />
 
 					<?php if (!empty($errors['pseudoUser'])): ?>
 					
@@ -68,8 +69,7 @@
 
 
 				<div class="form-group">
-					<label for="password">Entrez un mot de passe</label>
-					<input type="password" name="password" id="password" value="" />
+					<input type="password" name="password" id="password" placeholder="Votre mot de passe" value="" />
 
 					<?php if (!empty($errors['password'])): ?>
 					

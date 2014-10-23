@@ -63,16 +63,12 @@
 
 
 	<main class="container">
+		<h1>PAS ENCORE INSCRIT ?  CRÉEZ UN COMPTE !</h1>
+
 		<section class="formulaire">
-
-			<div class="title-question">
-				<h1>PAS ENCORE INSCRIT ?  CRÉEZ UN COMPTE !</h1>
-			</div>
-
 			<form id="inscrition" method="POST" novalidate>
 				<div class="form-group">
-					<label for="pseudoUser">Entrez votre pseudo</label>
-					<input type="text" name="pseudoUser" id="pseudoUser" value="<?php echo $pseudoUser; ?>" />
+					<input type="text" name="pseudoUser" id="pseudoUser" placeholder="Votre pseudo" value="<?php echo $pseudoUser; ?>" />
 
 					<?php if (!empty($errors['pseudoUser'])): ?>
 					
@@ -80,8 +76,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="emailUser">Entrez votre email</label>
-					<input type="text" name="emailUser" id="emailUser" value="<?php echo $emailUser; ?>" />
+					<input type="text" name="emailUser" id="emailUser" placeholder="Votre email" value="<?php echo $emailUser; ?>" />
 
 					<?php if (!empty($errors['emailUser'])): ?>
 				
@@ -89,8 +84,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="password">Entrez un mot de passe</label>
-					<input type="password" name="password" id="password" value="<?php echo $password; ?>" />
+					<input type="password" name="password" id="password" placeholder="Votre mot de passe" value="<?php echo $password; ?>" />
 
 					<?php if (!empty($errors['password'])): ?>
 					
@@ -98,8 +92,7 @@
 				</div>
 
 				<div class="form-group">
-					<label for="passwordBis">Vérifiez votre mot de passe</label>
-					<input type="password" name="passwordBis" id="passwordBis" value="<?php echo $passwordBis; ?>" />
+					<input type="password" name="passwordBis" id="passwordBis" placeholder="Vérifier votre mot de passe" value="<?php echo $passwordBis; ?>" />
 
 					<?php if (!empty($errors['passwordBis'])): ?>
 					
@@ -107,9 +100,7 @@
 				</div>
 
 				<div class="form-group">
-					<div class="fake-label"></div>
-					<input type="submit" id="valider" value="Valider" />
-					
+					<input type="submit" id="valider" value="Valider" />	
 				</div>
 			</form>	
 		</section>

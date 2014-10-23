@@ -37,8 +37,13 @@
 			}
 		?>
 
-			<section class="question">
-				<div class="utils">
+			<section id="questionBloc">
+
+				<div <?php if($question["TotalReponses"] > 0){ ?>
+				class="utils"
+				<?php }else{?>
+				class="utilsNone"
+				<?php } ?> >
 					<a href="<?php echo $link_question; ?>">
 						<?php echo $question["TotalReponses"]; ?>
 					</a>
@@ -57,15 +62,14 @@
 						<a href="<?php echo goUserLink($question['id_user']); ?>">
 							<?php echo $question["user_pseudo"]; ?>
 						</a>
-						<p><?php echo $question["score"]; ?></p>
+						<p class="score"><?php echo $question["score"]; ?></p>
 					</div>
-				</div>
 
-				<?php
+					<?php
 					//boucle sur les tags
 					$tags = selectTagsQuestion($id_question);
 					foreach ($tags as $tag):
-				?>
+					?>
 
 					<div class="tags_questions">
 						<p><?php echo $tag["tag_name"]; ?></p>
@@ -73,13 +77,17 @@
 
 				<?php endforeach; ?>
 
+				</div>
+				<div class="clearboth"></div>
+				
+
 
 				<?php 
 					//editer une question si la question est à utilisateur
 					if ($connect && equalUser($my_user["id_user"], $question["id_user"])): 
 					$link = goUpdateQuestionLink($id_question);
 				?>
-					<a href="<?php echo $link; ?>">éditer ma question ?</a>
+					<a class="editer" href="<?php echo $link; ?>">éditer ma question ?</a>
 				<?php endif; ?>
 				
 

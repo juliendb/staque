@@ -1,9 +1,23 @@
 README.md
 
+<<<<<<< HEAD
 autre/
 js/
 sql/
 
+=======
+>>>>>>> 301bf959c5ba4234ee00e1a659b3ec5038d490ff
 
+/autre
+/ckeditor
+/functions
+/img
+/inc
+/js
+/page
+/sql
+/uploads
+functions.php
 index.php
+
 
