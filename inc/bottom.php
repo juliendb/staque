@@ -1,7 +1,8 @@
 	
 		<footer id="footer">
 			<?php date_default_timezone_set('Europe/London'); ?>
-			<p>&copy; <?php echo date('Y'); ?> staque juga</p>
+			<p class="footerTitle">&copy; <?php echo date('Y'); ?> staque juga</p>
+
 		</footer>
 </div>
 

@@ -46,20 +46,20 @@
 ?>
 
 	<main class="container">
-		<section class="detail-question">
 
+	<h1> Telle est la question</h1>
+
+	<section id=" questionDetail">
+
+		<div id="questionBloc">
 			<div class="title-question">
-				<a href="<?php echo goQuestionLink($id_question); ?>">
-					<?php echo $title; ?>
-				</a>
+				<a href="<?php echo goQuestionLink($id_question); ?>"><?php echo $title; ?></a>
 			</div>
 
 			<div class="content-question">
 				<?php echo $content; ?>
 			</div>
 			
-
-
 
 
 			<?php
@@ -76,33 +76,31 @@
 
 
 
-
-
-			<div class="profile_user">
+			<div id="userDetail">
 				<p><?php echo $date; ?></p>
 				<div>
 					<a href="<?php echo $link_adress; ?>">
 						<img src="<?php echo $question["img_profile"]; ?>">
 					</a>
-					<a href="<?php echo $link_adress; ?>">
+					<a class="user" href="<?php echo $link_adress; ?>">
 						<?php echo $question["user_pseudo"]; ?>
 					</a>
 					<p><?php echo $question["score"]; ?></p>
 				</div>
 			</div>
 
+			<div id="editerQuestionDetails">
+				<?php 
+					//editer une question si la question est à utilisateur
+					if ($connect && equalUser($my_user["id_user"], $question["id_user"])): 
+					$link = goUpdateQuestionLink($question["id_question"]);
+				?>
+					<a class="editer" href="<?php echo $link; ?>">Editer ma question ?</a>
+				<?php endif; ?>
+			</div>
+		
 
-
-
-
-			<?php 
-				//editer une question si la question est à utilisateur
-				if ($connect && equalUser($my_user["id_user"], $question["id_user"])): 
-				$link = goUpdateQuestionLink($question["id_question"]);
-			?>
-				<a href="<?php echo $link; ?>">éditer ma question ?</a>
-			<?php endif; ?>
-
+	
 
 			
 
@@ -127,10 +125,10 @@
 				}
 
 			?>
-				<div class="comment">
+				<div id="comment">
 					<p><?php echo $comment["content"]; ?></p>
 					<div class="comment_profile">
-						<a href="<?php echo $link_adress; ?>">
+						<a class="user" href="<?php echo $link_adress; ?>">
 							<?php echo $comment["user_pseudo"]; ?>
 						</a>
 						<p><?php echo $date; ?></p>
@@ -146,10 +144,12 @@
 				$link = "index.php?page=signup";
 				if ($connect) $link = goCommentLink($id_question, "question");
 			?>
-			<a href="<?php echo $link; ?>">ajouter un commentaire ?</a>
 
 
-		</section>
+			<a class="ajouter" href="<?php echo $link; ?>">ajouter un commentaire ?</a>
+
+		</div>
+	</section>
 
 
 		
@@ -174,7 +174,7 @@
 
 		?>
 
-			<section class="detail-reponses">	
+			<section id="detailReponses">	
 				<div class="vote">
 					
 					<?php
@@ -196,7 +196,7 @@
 						<a href="<?php echo $link_adress; ?>">
 							<img src="<?php echo $answer["img_profile"]; ?>">
 						</a>
-						<a href="<?php echo $link_adress; ?>">
+						<a class="user" href="<?php echo $link_adress; ?>">
 							<?php echo $answer["user_pseudo"]; ?>
 						</a>
 						<p><?php echo $answer["score"]; ?></p>
@@ -211,7 +211,7 @@
 					if ($connect && equalUser($my_user["id_user"], $answer["id_user"])): 
 					$link = goUpdateAnswerLink($answer['id_answer']);
 				?>
-					<a href="<?php echo $link; ?>">éditer ma réponse ?</a>
+					<a class="ajouter" href="<?php echo $link; ?>">éditer ma réponse ?</a>
 				<?php endif; ?>
 				
 
@@ -239,10 +239,10 @@
 						<p><?php echo $comment["content"]; ?></p>
 
 						<div class="comment_profile">
-							<a href="<?php echo $link_adress; ?>">
+							<a class="linkUser" href="<?php echo $link_adress; ?>">
 								<?php echo $comment["user_pseudo"]; ?>
 							</a>
-							<p><?php echo $date; ?></p>
+							<p class="date"><?php echo $date; ?></p>
 						</div>
 					</div>
 				<?php endforeach; ?>
@@ -254,7 +254,7 @@
 					$link = "index.php?page=signup";
 					if ($connect) $link = goCommentLink($answer["id_answer"], "answer"); 
 				?>
-				<a href="<?php echo $link; ?>">ajouter un commentaire ?</a>
+				<a class="ajouter" href="<?php echo $link; ?>">ajouter un commentaire ?</a>
 
 
 
@@ -267,7 +267,7 @@
 			$link = "index.php?page=signup";
 			if ($connect) $link = goAnswerLink($id_question);
 		?>
-		<a href="<?php echo $link; ?>">ajouter une réponse ?</a>
+		<a class="lien" href="<?php echo $link; ?>">ajouter une réponse ?</a>
 
 
 

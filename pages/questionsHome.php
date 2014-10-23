@@ -37,7 +37,8 @@
 			}
 		?>
 
-			<section class="question">
+			<section id="questionBloc">
+
 				<div <?php if($question["TotalReponses"] > 0){ ?>
 				class="utils"
 				<?php }else{?>
@@ -61,7 +62,7 @@
 						<a href="<?php echo goUserLink($question['id_user']); ?>">
 							<?php echo $question["user_pseudo"]; ?>
 						</a>
-						<p><?php echo $question["score"]; ?></p>
+						<p class="score"><?php echo $question["score"]; ?></p>
 					</div>
 
 					<?php
@@ -75,8 +76,9 @@
 					</div>
 
 				<?php endforeach; ?>
-				</div>
 
+				</div>
+				<div class="clearboth"></div>
 				
 
 
@@ -85,7 +87,7 @@
 					if ($connect && equalUser($my_user["id_user"], $question["id_user"])): 
 					$link = goUpdateQuestionLink($id_question);
 				?>
-					<a href="<?php echo $link; ?>">éditer ma question ?</a>
+					<a class="editer" href="<?php echo $link; ?>">éditer ma question ?</a>
 				<?php endif; ?>
 				
 

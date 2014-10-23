@@ -56,11 +56,8 @@ table {
 
 
 
-
-font-family: 'Ubuntu', sans-serif;
-font-family: 'Lato':300,400,700,300italic', sans-serif;
-
-
+/*font-family: 'Ubuntu', sans-serif;
+font-family: 'Lato':300,400,700,300italic', sans-serif;*/
 
 
 
@@ -71,54 +68,12 @@ font-family: 'Lato':300,400,700,300italic', sans-serif;
 #wrapper {
 	width: 100%;
 	text-align: center;
-
 }
 
 .container {
 	margin: auto;
-	max-width: 1200px;
-	
+	max-width: 1200px;	
 }
-
-
-input {
-	outline: none;
-}
-.clearboth{ clear: both;}
-
-.editer {
-	font-family: 'Lato';
-	font-weight: 400;
-	color: #ff5639;
-}
-
-.editer:hover {
-	color: #a43c39;
-}
-
-#questionBloc .ajouter {
-	font-family: 'Lato';
-	font-weight: 400;
-	color: #ff5639;
-	padding-bottom: 5px;
-}
-
-#questionBloc .ajouter:hover {
-	color: #a43c39;
-}
-
-#questionBloc .ajouter,
-#detailReponses .ajouter {
-	font-family: 'Lato';
-	font-weight: 400;
-	color: #ff5639;
-}
-
-#questionBloc .ajouter:hover, 
-#detailReponses .ajouter:hover {
-	color: #a43c39;
-}
-
 
 /***** FOOTER sur toute les pages******/
 
@@ -129,17 +84,17 @@ input {
 	position: relative;
 	width: 100%;
 	margin-top: 15px;
-	text-align: center;
-	bottom: 0;
-	position:relative;
+	margin-bottom: 15px;
 }
 
 #footer .footerTitle {
-	color: #fff;
-	font-family: 'Lato'
+
 	font-size: 13px;
 	font-weight: 400;
 }
+
+
+
 
 
 /* header */
@@ -205,7 +160,7 @@ header {
 
 /* s'inscrire et se connecter */
 
-#sign a, #sign p{
+#sign  a, p{
 	display: inline;
 	text-decoration: none;
 	font-family: 'ubuntu';
@@ -247,19 +202,8 @@ nav a{
 }
 
 nav a:hover{
-	text-decoration: none;
-	font-family: 'ubuntu';
-	font-weight: 400;
-	font-size: 13px;
-	letter-spacing: 0.15em ;
-	line-height: 89px;
-	margin: 0 20px 0 20px;
-	text-transform: uppercase;
-	color: #fff;
 	border-bottom: 3px solid #42cc70;
-
 }
-
 
 
 
@@ -302,23 +246,13 @@ nav a:hover{
 }
 
 #askQuestion:hover{
-	display: block;
-	width: 250px;
-	height: 50px;
 	background-color: #52FF99;
-	border-radius: 3px;
-	text-align: center;
 	transition-duration: 0.2s;
 }
 
 
 #askQuestion:active{
-	display: block;
-	width: 250px;
-	height: 50px;
 	background-color: #42cc70;
-	border-radius: 3px;
-	text-align: center;
 	box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2);
 
 }
@@ -331,69 +265,44 @@ nav a:hover{
 	width: 51px;
 	height: 39px;
 	margin-top: 259px;
-	left: 50%;
+	margin-left: 580px;
 	
 }
 
+
+
+
 /******* QUESTIONS HOME ********/
-
-
 .container h1{
 	font-family: 'ubuntu';
 	font-size: 16px;
 	color: #ff5639;
 	text-transform: uppercase;
-	font-weight: 700;
-
-}
-
-#questionBloc {
-	padding: 3px 20px;
-	background-color: #eeeff0;
-	height: 100%;
-	margin: 20px 0;
-	
-}
-/***** Question Détails ********/
-
-#editerQuestionDetails {
-	padding-top: 5px;
-	padding-bottom: 15px;
-
-}
-
-
-
-
-
-/***** Content ******/
-
-#questionBloc .content-question {
-	width: 80%;
 	margin-top: 10px;
+
 }
 
-#userDetail .user {
-	color: #42cc70;
-	font-family: 'lato';
-	font-size: 17px;
-	font-weight: 400;
-	text-decoration: none;
-	text-transform: lowercase;
-}
-
-
-#questionBloc .utils {
+/*.questionDetails{
 	float: left;
-	padding: 20px 10px;
+	padding-left: 20px;
+	padding-bottom: 5px;
+
+}
+*/
+
+.utils {
+	float: left;
+	padding-left: 20px;
 }
 
-#questionBloc .utils a{
+.utils a{
+	content:"";
 	display: block;
 	width: 52px;
 	height: 52px;
 	text-align: center;
 	background-color:#42cc70;
+	border: 3px solid #42cc70;
 	text-decoration: none;
 	font-family: 'Lato';
 	font-size: 20px;
@@ -404,20 +313,14 @@ nav a:hover{
 	
 }
 
-
-
-
-
-
-
 /***** utils sans réponses ******/
-
-#questionBloc .utilsNone {
+.utilsNone {
 	float: left;
-	padding: 20px 10px;
+	padding-left: 20px;
 }
 
-#questionBloc .utilsNone a{
+.utilsNone a{
+	content:"";
 	display: block;
 	width: 52px;
 	height: 52px;
@@ -430,20 +333,26 @@ nav a:hover{
 	font-weight: 400;
 	line-height: 48px;
 	color: #42cc70;
+
 	
 }
 
-#questionBloc .questionDetails{
-	float: left;
-	margin: 0 0 10px 20px;
-
+.question {
+	background-color: #eeeff0;
+	overflow: hidden;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	
 }
 
-#questionBloc .title-question{
-	padding-top: 10px;
+.title-question{
+	float:left;
+	padding-bottom: 6px;
 }
 
-#questionBloc .title-question a{
+.title-question a{
 	color:#171210;
 	text-decoration: none;
 	font-family: 'lato';
@@ -452,41 +361,45 @@ nav a:hover{
 
 }
 
-#questionBloc .infosUser{
-	margin-top: 10px;
-
-}
-
-#questionBloc .infosUser a{
+.question p{
+	float:left;
 	color:#42cc70;
-	font-family: 'lato';
-	font-size: 17px;
-	font-weight: 400;	
-	text-decoration: none;
-	text-transform: lowercase;
-}
-
-#questionBloc .infosUser a:hover{
-	color:#35a45a;
 	font-family: 'lato';
 	font-size: 17px;
 	font-weight: 400;
 	text-transform: lowercase;
+
 }
 
 
+
+.infosUser a{
+	float:left;
+	color:#42cc70;
+	font-family: 'lato';
+	font-size: 17px;
+	font-weight: 400;
+	text-transform: lowercase;
+
+}
+
+.infosUser a:hover{
+	color:#35a45a;
+
+}
+
+
+/**** score *****/
 
 
 
 /***** TAGS ******/
 
-#questionBloc .tags_questions {
-	display: inline-block;
-	margin-top: 15px;
-	padding-bottom: 8px;
+.tags_questions {
+	float:left;
 }
 
-#questionBloc .tags_questions p{
+.tags_questions p{
 	font-family: 'Lato';
 	font-weight: 700;
 	font-size: 12px;
@@ -500,50 +413,6 @@ nav a:hover{
 
 
 
-/****** Commentaires de la question *******/
-
-#comment{
-	width: 98%;
-	border-top: 1px;
-	border-style: dotted;
-	margin: 9px 20px;
-}
-
-
-#comment .user .ajouter {
-	font-family: 'Lato';
-	font-size: 400;
-	color: #ff5639;
-}
-
-#comment .user .ajouter:hover {
-	font-family: 'Lato';
-	font-size: 400;
-	color: #a43c39;
-}
-
-
-
-
-/********* Réponses ************/
-
-
-#detailReponses{
-	padding: 3px 20px;
-	background-color: #eeeff0;
-	height: 100%;
-	margin: 20px 0;
-
-}
-
-#detailReponses .profile_user .user {
-	color: #42cc70;
-	font-family: 'lato';
-	font-size: 17px;
-	font-weight: 400;
-	text-decoration: none;
-	text-transform: lowercase;
-}
 
 
 
@@ -551,73 +420,8 @@ nav a:hover{
 
 
 
-/********** formumlaires ************/
 
 
 
-
-/*formulaire*/
-
-.formulaire {
-	margin-top: 10px;
-}
-
-.form-group input[type=text],[type=email],[type=password]{
-	margin-top: 10px;
-	padding: 0 10px 0 32px;
-	border-width: 3px;
-	border-color: rgb( 255, 86, 57 );
-	border-style: solid;
-	border-radius: 2px;
-	width: 275px;
-	height: 48px;
-}
-
-p {
-/*	font-family: 'Lato';
-	font-weight: 700;
-	color: #000;
-	font-size: 16px;
-	display: inline;
-*/
-display: inline;
-	text-decoration: none;
-	font-family: 'ubuntu';
-	text-transform: uppercase;
-	font-size: 13px;
-	margin-right: 22px;
-
-}
-.form-group input[type=text]::-webkit-input-placeholder,
-	[type=email]::-webkit-input-placeholder,
-	[type=password]::-webkit-input-placeholder {
-	margin-left: 10px;
-	font-family: 'Lato';
-	font-weight:700;
-	color: #ff5639;
-	font-size: 15px;
-	letter-spacing: 0.02;
-	line-height: 15px;
-}
-
-
-.form-group input[type=submit] {
-	width: 150px;
-	height: 48px;
-	border: none;
-	margin-top: 20px;
-	background-color: #42cc70;
-	border-radius: 3px;
-	text-align: center;
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 15px;
-	text-decoration: none;
-	letter-spacing: 0.04em ;
-	color : #fff;
-	text-shadow: 0px 0px 1px rgba(0 0 0 0.5);
-	text-transform: uppercase;
-	line-height: 50px;
-
-}
 
 
