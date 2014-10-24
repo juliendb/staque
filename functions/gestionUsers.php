@@ -21,8 +21,8 @@
 		$token = randomString();
 
 
-		$sql = "INSERT INTO users (user_pseudo, email, status, password, salt, token, score, dateCreated, dateModified)
-				VALUES (:user_pseudo, :email, 1, :password, :salt, :token, 5, NOW(), NOW())";
+		$sql = "INSERT INTO users (img_profile, user_pseudo, email, status, password, salt, token, score, dateCreated, dateModified)
+				VALUES ('uploads/thumbs/default.jpg', :user_pseudo, :email, 1, :password, :salt, :token, 5, NOW(), NOW())";
 
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindValue(':user_pseudo', $user_pseudo);

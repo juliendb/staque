@@ -131,7 +131,7 @@
 				require("inc/SimpleImage.php");
 
 				$img = new abeautifulsite\SimpleImage($destination);
-				$img->thumbnail(80,80)->save("uploads/thumbs/".$filename);
+				$img->thumbnail(120,120)->save("uploads/thumbs/".$filename);
 
 				$img_profile = "uploads/thumbs/".$filename;
 				$link = goUpdateUserLink($id_user)."&img_profile=".$img_profile;

@@ -53,10 +53,7 @@
 
 		<div id="mainHeader">
 			<div class="container">
-
-				<div id="help">
-					<a href=""></a>
-				</div>
+				<a href="http://192.168.1.14/tickets/"><div id="help"></div></a>
 			
 				<div id="askQuestion">
 					<a href="<?php echo $link.$askQuestion; ?>">Poser une question</a>
