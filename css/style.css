@@ -120,6 +120,15 @@ input {
 }
 
 
+#illustration {
+	text-align: center;
+	margin-left: 40px;
+}
+
+
+
+
+
 /***** FOOTER sur toute les pages******/
 
 #footer {
@@ -546,9 +555,20 @@ nav a:hover{
 }
 
 /******* vote sur la reponse ********/
-#detailReponses .vote .plus {
-	float: left;
-	padding: 20px 10px;
+#detailReponses .vote {
+	padding: 20px;
+	display: inline-block;
+	background-color: red;
+}
+#detailReponses .vote * {
+	background-color: green;
+}
+
+#detailReponses .vote a {
+	display: block;
+}
+#detailReponses .vote p {
+	display: block;
 }
 
 #detailReponses .vote .plus a{
@@ -567,7 +587,10 @@ nav a:hover{
 	
 }
 
+#answer {
+	display: inline-block;
 
+}
 
 
 

@@ -189,33 +189,34 @@
 					<a class="moins" href="<?php echo "index.php?page=votes&".$link."&vote_type=0"; ?>">-</a>
 				</div>
 
-				<p><?php echo $answer["content"]; ?></p>
 				
-				<div class="profile_user">
-					<p><?php echo $date; ?></p>
+				<div id="answer">
+					
+					<div class="profile_user">
+						<p><?php echo $date; ?></p>
 
-					<div>
-						<a href="<?php echo $link_adress; ?>">
-							<img src="<?php echo $answer["img_profile"]; ?>">
-						</a>
-						<a class="user" href="<?php echo $link_adress; ?>">
-							<?php echo $answer["user_pseudo"]; ?>
-						</a>
-						<p><?php echo $answer["score"]; ?></p>
+						<div>
+							<a href="<?php echo $link_adress; ?>">
+								<img src="<?php echo $answer["img_profile"]; ?>">
+							</a>
+							<a class="user" href="<?php echo $link_adress; ?>">
+								<?php echo $answer["user_pseudo"]; ?>
+							</a>
+							<p><?php echo $answer["score"]; ?></p>
+						</div>
 					</div>
+
+				
+					<p><?php echo $answer["content"]; ?></p>
+					<?php 
+						//editer une réponse si la réponse est à utilisateur
+						if ($connect && equalUser($my_user["id_user"], $answer["id_user"])): 
+						$link = goUpdateAnswerLink($answer['id_answer']);
+					?>
+						<a class="ajouter" href="<?php echo $link; ?>">éditer ma réponse ?</a>
+					<?php endif; ?>
 				</div>
 
-
-
-
-				<?php 
-					//editer une réponse si la réponse est à utilisateur
-					if ($connect && equalUser($my_user["id_user"], $answer["id_user"])): 
-					$link = goUpdateAnswerLink($answer['id_answer']);
-				?>
-					<a class="ajouter" href="<?php echo $link; ?>">éditer ma réponse ?</a>
-				<?php endif; ?>
-				
 
 
 

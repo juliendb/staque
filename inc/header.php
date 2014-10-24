@@ -69,6 +69,9 @@
 				</nav>
 				
 			</div>	
+			<div id="illustration">
+				<img src="img/illustration.png" height="271" width="303">
+			</div>
 		</div>
 
 
