@@ -122,6 +122,15 @@ input {
 }
 
 
+#illustration {
+	text-align: center;
+	margin-left: 40px;
+}
+
+
+
+
+
 /***** FOOTER sur toute les pages******/
 
 #footer {
@@ -584,11 +593,26 @@ nav a:hover{
 	font-weight: 300;
 	line-height: 48px;
 	color: #fff;
-
+}
 	
+#detailReponses .vote {
+	padding: 20px;
+	display: inline-block;
+	background-color: red;
+}
+#detailReponses .vote * {
+	background-color: green;
 }
 
+#detailReponses .vote a,
+#detailReponses .vote p {
+	display: block;
+}
 
+#answer {
+	display: inline-block;
+
+}
 
 
 
