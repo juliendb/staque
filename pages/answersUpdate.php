@@ -53,18 +53,16 @@
 ?>
 
 	<main class="container">
-
 		<form id="answer" method="POST" novalidate>
 
 			<div class="form-group">
-				<label for="content">Modifier la réponse</label>
 				<textarea name="content" id="contentEdit" rows="10" cols="40">
 					<?php echo $content; ?>
 				</textarea>
 			</div>
 
 			<div class="form-group">
-				<input type="submit" name="valider">
+				<input type="submit" id="valider" value="Valider" />
 			</div>
 
 		</form>

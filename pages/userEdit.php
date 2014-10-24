@@ -159,61 +159,35 @@
 			</form>
 
 
-			<form = class="editProfile" method="POST">
+			<form class="editProfile" method="POST">
 				<div class="form-group">
-					<label for="user_name">Entrez votre nom</label>
-					<input type="text" name="user_name" id="user_name" value="<?php echo $user['user_name']; ?>" />
-
-					<?php if (!empty($errors['user_name'])): ?>
-					
-					<?php endif; ?>
+					<input type="text" name="user_name" id="user_name" value="<?php echo $user['user_name']; ?>" placeHolder="Renseigner votre nom"/>
 				</div>
 			
 				<div class="form-group">
-					<label for="email">Entrez votre email</label>
-					<input type="text" name="email" id="email" value="<?php echo $user['email']; ?>" />
-
-					<?php if (!empty($errors['email'])): ?>
-				
-					<?php endif; ?>
+					<input type="text" name="email" id="email" value="<?php echo $user['email']; ?>" placeHolder="Renseigner votre email"/>
 				</div>
 
 				<div class="form-group">
-					<label for="country">Entrez votre pays</label>
-					<input type="text" name="country" id="country" value="<?php echo $user['country']; ?>" />
+					<input type="text" name="country" id="country" value="<?php echo $user['country']; ?>" placeHolder="Renseigner votre pays"/>
 				</div>
 
 				<div class="form-group">
-					<label for="language">Entrez votre langue</label>
-					<input type="text" name="language" id="language" value="<?php echo $user['language']; ?>" />
-
-					<?php if (!empty($errors['language'])): ?>
-				
-					<?php endif; ?>
+					<input type="text" name="language" id="language" value="<?php echo $user['language']; ?>" placeHolder="Renseigner votre langue"/>
 				</div>
 
 				
 				<div class="form-group">
-					<label for="job">Entrez votre métier</label>
-					<input type="text" name="job" id="job" value="<?php echo $user['job']; ?>" />
-
-					<?php if (!empty($errors['job'])): ?>
-				
-					<?php endif; ?>
+					<input type="text" name="job" id="job" value="<?php echo $user['job']; ?>" placeHolder="Renseigner votre métier"/>
 				</div>
 
 			
 
 				<div class="form-group" id="linksUsers">
-					<p><?php echo $user['dateCreated']; ?></p>
-					<p><?php echo $user['TotalQuestions']; ?></p>
-					<p><?php echo $user['TotalAnswers']; ?></p>	
 				</div>
 
 				<div class="form-group">
-					<div class="fake-label"></div>
 					<input type="submit" id="valider" value="Valider" />
-					
 				</div>
 
 			</form>

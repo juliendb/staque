@@ -74,6 +74,10 @@
 		showPage();
 	}
 
+	function votes(){
+		showPage();
+	}
+
 
 
 

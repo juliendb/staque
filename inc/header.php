@@ -65,11 +65,15 @@
 				<nav id="menu">
 					<a href="<?php echo $link.'questionsHome'; ?>">Questions</a>
 					<a href="<?php echo $link.'usersHome'; ?>">Utilisateurs</a>
-					<a href="">Sans réponses</a>
+
+					<a href="<?php echo $link.'questionsHome&no_answers=now'; ?>">Sans réponses</a>
 
 					<div id="illustration">
 						<img src="img/illustration.png" height="271" width="303">
 					</div>
+
+					
+
 				</nav>
 				
 			</div>	

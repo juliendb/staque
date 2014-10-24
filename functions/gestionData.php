@@ -26,7 +26,7 @@
 						U.user_pseudo,
 						U.score,
 
-						COUNT(A.id_answer) AS TotalReponses 
+						COUNT(A.id_answer) AS TotalReponses
 						/*COUNT(V.id_vote) AS TotalVotes */
 			
 
@@ -43,6 +43,89 @@
 		//affiche
 		return $stmt->fetchAll();
 	}
+
+
+
+
+	// select sur questions sans réponses
+	function selectQuestionsHomeNo()
+	{
+		global $dbh;
+
+
+		$sql = "SELECT 	Q.id_question,
+						Q.title,
+						Q.dateCreated,
+						Q.dateModified,
+
+						U.id_user,
+						U.user_pseudo,
+						U.score,
+
+						COUNT(A.id_answer) AS TotalReponses
+						/*COUNT(V.id_vote) AS TotalVotes */
+			
+
+				FROM users AS U, questions AS Q	
+				LEFT OUTER JOIN answers AS A ON (Q.id_question = A.id_question)
+				/* LEFT OUTER JOIN votes AS V ON (A.id_answer = V.id_answer) */
+				WHERE U.id_user = Q.id_user
+				GROUP BY Q.id_question
+				HAVING COUNT(A.id_answer) = 0";
+
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		
+		//affiche
+		return $stmt->fetchAll();
+	}
+
+
+
+
+
+
+
+	// select sur questions sans réponses
+	function selectQuestionsHomeTag($tag)
+	{
+		global $dbh;
+
+
+		$sql = "SELECT 	Q.id_question,
+						Q.title,
+						Q.dateCreated,
+						Q.dateModified,
+
+						U.id_user,
+						U.user_pseudo,
+						U.score,
+
+						COUNT(A.id_answer) AS TotalReponses
+						/*COUNT(V.id_vote) AS TotalVotes */
+			
+
+				FROM users AS U, questions AS Q
+				LEFT JOIN answers AS A ON (Q.id_question = A.id_question)
+				LEFT JOIN tags_relation AS R ON (R.id_question = Q.id_question)
+				WHERE U.id_user = Q.id_user AND R.id_tag = :tag
+				GROUP BY Q.id_question";
+
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":tag", $tag);
+		$stmt->execute();
+		
+		//affiche
+		return $stmt->fetchAll();
+	}
+
+
+
+
+
+
 
 
 

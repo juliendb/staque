@@ -25,43 +25,48 @@
 ?>
 
 	<main class="container">
-
 		<section id="userDetails">
 			
-			<div class="infosUser">
-				<img src="<?php echo $user['img_profile']; ?>" >
-				<a href="<?php echo goUserLink($id_user); ?>" ><?php echo $user['user_pseudo']; ?></a>
-				<!--<p>Status</p>-->
-				<p><?php echo $user['score']; ?></p>
-			</div>
 
-			<div class="infosUserBis">
+			<div class="user">
+				<a id="profile" href="<?php echo goUserLink($id_user); ?>" >
+					<img width="120px" height="120px" src="<?php echo $user['img_profile']; ?>" >
+				</a>
 				
-				<?php foreach ($linksUser as $linkUser): ?>
-					<a href="<?php echo $linkUser['link']; ?>"><?php echo $linkUser['link']; ?></a>
-				<?php endforeach; ?>
+				<div>
+					<a id="pseudo" href="<?php echo goUserLink($id_user); ?>" ><?php echo $user['user_pseudo']; ?></a>
+
+					<p><?php echo (!empty($user['user_name'])) ? $user['user_name'] : "nom non renseigné"; ?></p>
+					<p><?php echo (!empty($user['language'])) ? $user['language'] : "langue non renseigné"; ?></p>
+					<p><?php echo (!empty($user['country'])) ? $user['country'] : "pays non renseigné"; ?></p>
+					<p><?php echo (!empty($user['job'])) ? $user['job'] : "métier non renseigné"; ?></p>
+					<p>Score :<?php echo $user['score']; ?></p>
 
 
-				<p><?php echo $user['language']; ?></p>
-				<p><?php echo $user['country']; ?></p>
-				<p><?php echo $user['job']; ?></p>	
+					<?php foreach ($linksUser as $linkUser): ?>
+						<a href="<?php echo $linkUser['link']; ?>"><?php echo $linkUser['link']; ?></a>
+					<?php endforeach; ?>
+
+
+					<?php
+						// date
+						$dateCreated = $user['dateCreated'];
+						$date = "membre depuis ".getBetweenDate($dateCreated);
+					?>
+					<p><?php echo $date; ?></p>
+
+
+					<span>
+						<p>Questions : <?php echo $user['TotalQuestions']; ?></p>
+						<p>Réponses : <?php echo $user['TotalAnswers']; ?></p>
+					</span>
+				</div>
 			</div>
 
-			<div class="infosUserTer">
-
-				<?php
-					$dateCreated = $user['dateCreated'];
-					$date = "membre depuis ".getBetweenDate($dateCreated, "NOW");
-				?>
-
-				<p><?php echo $date; ?></p>
-				<p><?php echo $user['TotalQuestions']; ?></p>
-				<p><?php echo $user['TotalAnswers']; ?></p>	
-			</div>
 
 
 
-			<div class="button">
+			<div class="form-group">
 				<?php if ($connect && equalUser($my_user["id_user"], $id_user)): ?>
 					<a href="<?php echo goUpdateUserLink($my_user['id_user']); ?>">Editer le profil</a>
 				<?php endif; ?>
