@@ -49,13 +49,16 @@
 
 		<section class="answers">
 			<form class="editAnswer" method="POST">
-				<label for="content">Entrez votre réponse</label>
+				
+				<div class="form-group">
+					<textarea name="content" id="contentEdit" rows="10" cols="40">
+						<?php echo $content; ?>
+					</textarea>
+				</div>
 
-				<textarea name="content" id="contentEdit" rows="10" cols="40">
-					<?php echo $content; ?>
-				</textarea>
-
-				<input type="submit" id="valider" value="Valider" />
+				<div class="form-group">
+					<input type="submit" id="valider" value="Valider" />
+				</div>
 
 			</form>
 		</section>

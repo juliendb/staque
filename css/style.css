@@ -68,19 +68,19 @@ font-family: 'Lato':300,400,700,300italic', sans-serif;
 /******* HEADER SUR TOUTE LES PAGES ********/
 
 
+
 #wrapper {
 	width: 100%;
 	text-align: center;
-
-	color: black;
-
 }
 
 .container {
 	margin: auto;
 	max-width: 1200px;
-	
 }
+
+
+a { text-decoration:none; }
 
 
 input {
@@ -132,8 +132,6 @@ input {
 	width: 100%;
 	margin-top: 15px;
 	text-align: center;
-	bottom: 0;
-	position:relative;
 }
 
 #footer .footerTitle {
@@ -185,8 +183,8 @@ header {
 	padding-right: 30px;
 }
 
-#search div {
-	display: inline-block;
+#search input[type=submit] {
+	display: inline;
 	background: url('../img/loupe.png') no-repeat;
 	width: 21px;
 	height: 21px;
@@ -244,7 +242,7 @@ nav a{
 	line-height: 89px;
 	margin: 0 20px 0 20px;
 	text-transform: uppercase;
-	color: #000;
+	color: #fff;
 
 }
 
@@ -257,7 +255,7 @@ nav a:hover{
 	line-height: 89px;
 	margin: 0 20px 0 20px;
 	text-transform: uppercase;
-	color: #000;
+	color: #fff;
 	border-bottom: 3px solid #42cc70;
 
 }
@@ -297,7 +295,7 @@ nav a:hover{
 	text-decoration: none;
 	letter-spacing: 0.04em ;
 	margin-left: 33px;
-	color : #000;
+	color : #fff;
 	text-shadow: 0px 0px 1px rgba(0 0 0 0.5);
 	text-transform: uppercase;
 	line-height: 50px;
@@ -401,7 +399,7 @@ nav a:hover{
 	font-size: 20px;
 	font-weight: 300;
 	line-height: 48px;
-	color: #000;
+	color: #fff;
 
 	
 }
@@ -419,12 +417,12 @@ nav a:hover{
 	padding: 20px 10px;
 }
 
-#questionBloc .utilsNone a{
+#questionBloc .utilsNone a {
 	display: block;
 	width: 52px;
 	height: 52px;
 	text-align: center;
-	background-color:#fff;
+	/* background-color:#fff; */
 	border: 3px solid #42cc70;
 	text-decoration: none;
 	font-family: 'Lato';
@@ -434,6 +432,27 @@ nav a:hover{
 	color: #42cc70;
 	
 }
+
+
+
+/*  texte réponses  */
+#questionBloc .utils a::after,
+#questionBloc .utilsNone a::after
+{
+	content: "reponses";
+	position: absolute;
+	text-transform: uppercase;
+	font-size: 0.8em;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	text-align: center;
+	margin-left: -46px;
+	margin-top: 45px;
+	color:#42cc70;
+}
+
+
+
 
 #questionBloc .questionDetails{
 	float: left;
@@ -479,8 +498,6 @@ nav a:hover{
 
 
 
-.tags_questions,
-
 
 /***** TAGS ******/
 
@@ -490,7 +507,7 @@ nav a:hover{
 	padding-bottom: 8px;
 }
 
-#questionBloc .tags_questions p{
+#questionBloc .tags_questions a{
 	font-family: 'Lato';
 	font-weight: 700;
 	font-size: 12px;
@@ -549,7 +566,27 @@ nav a:hover{
 	text-transform: lowercase;
 }
 
+/******* vote sur la reponse ********/
+#detailReponses .vote .plus {
+	float: left;
+	padding: 20px 10px;
+}
 
+#detailReponses .vote .plus a{
+	display: block;
+	width: 52px;
+	height: 52px;
+	text-align: center;
+	background-color:#42cc70;
+	text-decoration: none;
+	font-family: 'Lato';
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 48px;
+	color: #fff;
+
+	
+}
 
 
 
@@ -623,5 +660,65 @@ display: inline;
 	line-height: 50px;
 
 }
+
+
+
+
+
+
+
+
+
+.user
+{
+	float: left;
+	padding-right: 20px;
+	margin-top: 60px;
+}
+
+.user #profile
+{
+	float: left;
+}
+
+.user div
+{
+	width: 240px;
+	padding-left: 70px;
+}
+
+.user div p,
+.user div a,
+.user span
+{
+	display: block;
+	margin-top: 5px; 
+}
+
+.user span p
+{
+	display: inline;
+}
+
+
+/* règle taille user detail */
+#userDetails
+{
+	margin-left: 200px;
+}
+
+#userDetails .user div p,
+#userDetails .user div a,
+#userDetails .user span
+{
+	margin-top: 20px;
+}
+
+#userDetails .user div
+{
+	width: 480px;
+	padding-left: 140px;
+}
+
 
 

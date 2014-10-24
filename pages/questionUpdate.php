@@ -57,19 +57,19 @@
 
 		<form id="titleQuestion" method="POST" novalidate>
 
-			<label for="title">Modifier le titre question</label>
-			<input name="title" value="<?php echo $title; ?>">
+			<div class="form-group">
+				<input type="text" name="title" id="title" value="<?php echo $title; ?>" placeHolder="Modifier le titre de la question"/>
+			</div>
 			
 
 			<div class="form-group">
-				<label for="content">Modifier la question</label>
 				<textarea name="content" id="contentEdit" rows="10" cols="40">
 					<?php echo $content; ?>
 				</textarea>
 			</div>
 
 			<div class="form-group">
-				<input type="submit" name="valider">
+				<input type="submit" id="valider" value="Valider" />
 			</div>
 
 		</form>

@@ -58,7 +58,7 @@
 				
 			
 
-			<form id="inscrition" method="POST" novalidate>
+			<form id="inscrition" method="POST" novalidate autocomplete="off">
 				<div class="form-group">
 					<input type="text" name="pseudoUser" id="pseudoUser" placeholder="Votre pseudo" value="<?php echo $pseudoUser; ?>" />
 

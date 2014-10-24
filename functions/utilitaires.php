@@ -129,8 +129,8 @@
 	{
 		$list = array();
 
-		$list[] = selectCalculVote($id_answer , 0);
-		$list[] = selectCalculVote($id_answer , 1);
+		$list[] = selectCalculVote($id_answer, 0);
+		$list[] = selectCalculVote($id_answer, 1);
 
-		return ($list[0]*-1)+($list[1]*1);
+		return ($list[0]*1)+($list[1]*-1);
 	}

@@ -49,17 +49,20 @@
 
 		<section id="comment">
 			<form class="editComment" method="POST">
-				<label for="content">Entrez votre commentaire</label>
-				<textarea name="content" id="contentEdit" rows="10" cols="40">
-					<?php echo $content; ?>
-				</textarea>
+				
+				<div class="form-group">
+					<textarea name="content" id="contentEdit" rows="10" cols="40">
+						<?php echo $content; ?>
+					</textarea>
+				</div>
 
-				<input type="submit" id="valider" value="Valider" />
+				<div class="form-group">
+					<input type="submit" id="valider" value="Valider" />
+				</div>
 
 				
-				<?php if($type_comment === 'question') :?>
-
-				<a href="<?php echo goQuestionLink($id_rubric); ?>" >Retours à la question</a>
+				<?php if ($type_comment === 'question') :?>
+					<a href="<?php echo goQuestionLink($id_rubric); ?>" >Retours à la question</a>
 				<?php endif; ?>
 			</form>
 		</section>

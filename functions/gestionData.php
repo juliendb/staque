@@ -26,7 +26,7 @@
 						U.user_pseudo,
 						U.score,
 
-						COUNT(A.id_answer) AS TotalReponses 
+						COUNT(A.id_answer) AS TotalReponses
 						/*COUNT(V.id_vote) AS TotalVotes */
 			
 
@@ -43,6 +43,89 @@
 		//affiche
 		return $stmt->fetchAll();
 	}
+
+
+
+
+	// select sur questions sans réponses
+	function selectQuestionsHomeNo()
+	{
+		global $dbh;
+
+
+		$sql = "SELECT 	Q.id_question,
+						Q.title,
+						Q.dateCreated,
+						Q.dateModified,
+
+						U.id_user,
+						U.user_pseudo,
+						U.score,
+
+						COUNT(A.id_answer) AS TotalReponses
+						/*COUNT(V.id_vote) AS TotalVotes */
+			
+
+				FROM users AS U, questions AS Q	
+				LEFT OUTER JOIN answers AS A ON (Q.id_question = A.id_question)
+				/* LEFT OUTER JOIN votes AS V ON (A.id_answer = V.id_answer) */
+				WHERE U.id_user = Q.id_user
+				GROUP BY Q.id_question
+				HAVING COUNT(A.id_answer) = 0";
+
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->execute();
+		
+		//affiche
+		return $stmt->fetchAll();
+	}
+
+
+
+
+
+
+
+	// select sur questions sans réponses
+	function selectQuestionsHomeTag($tag)
+	{
+		global $dbh;
+
+
+		$sql = "SELECT 	Q.id_question,
+						Q.title,
+						Q.dateCreated,
+						Q.dateModified,
+
+						U.id_user,
+						U.user_pseudo,
+						U.score,
+
+						COUNT(A.id_answer) AS TotalReponses
+						/*COUNT(V.id_vote) AS TotalVotes */
+			
+
+				FROM users AS U, questions AS Q
+				LEFT JOIN answers AS A ON (Q.id_question = A.id_question)
+				LEFT JOIN tags_relation AS R ON (R.id_question = Q.id_question)
+				WHERE U.id_user = Q.id_user AND R.id_tag = :tag
+				GROUP BY Q.id_question";
+
+
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindValue(":tag", $tag);
+		$stmt->execute();
+		
+		//affiche
+		return $stmt->fetchAll();
+	}
+
+
+
+
+
+
 
 
 
@@ -185,7 +268,7 @@
 				FROM users U, questions Q				
 				WHERE U.id_user = Q.id_user
 				AND Q.id_question = :id_question
-				ORDER BY Q.dateModified ASC";
+				ORDER BY Q.dateModified DESC";
 
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindValue(":id_question", $id_question);
@@ -222,7 +305,7 @@
 				FROM users AS U, answers AS A
 				WHERE U.id_user = A.id_user
 				AND A.id_question = :id_question
-				ORDER BY A.dateCreated ASC
+				ORDER BY A.dateCreated DESC
 				LIMIT 6";
 
 		$stmt = $dbh->prepare($sql);
@@ -286,7 +369,7 @@
 				WHERE U.id_user = C.id_user
 				AND C.id_rubric = :id_rubric
 				AND C.type_comment = :type_comment
-				ORDER BY C.dateCreated ASC
+				ORDER BY C.dateCreated DESC
 				LIMIT 3";
 
 		$stmt = $dbh->prepare($sql);
@@ -544,8 +627,9 @@
 	{
 		global $dbh;
 
+
 		$sql = "UPDATE users
-				SET score = score+:score
+				SET score += :score
 				WHERE id_user = :id_user";
 
 
@@ -633,6 +717,10 @@
 				updateScore($id_user, 1);
 				updateScore($id_userAnswer, 5);
 			}
+
+			// redirige vers page question
+			$redirection = $_SESSION['url'];
+			header("Location: $redirection");
 		}
 	}
 	

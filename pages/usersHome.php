@@ -19,28 +19,38 @@
 				<h1>Utilisateurs</h1>
 			</div>
 			
-			<div class="users">
+			<div id="users">
 			<?php 
 				foreach ($users as $user):
 				$id_user= $user['id_user'];
 			?>
 				
 				
-				<div id="user">
-					<a href="<?php echo goUserLink($id_user); ?>" ><img src="<?php echo $user['img_profile']; ?>" ></a>
-					<a href="<?php echo goUserLink($id_user); ?>" ><?php echo $user['user_pseudo']; ?></a>
+				<div class="user">
+					<a id="profile" href="<?php echo goUserLink($id_user); ?>" >
+						<img width="60px" height="60px" src="<?php echo $user['img_profile']; ?>" >
+					</a>
+					
+					<div>
+						<a id="pseudo" href="<?php echo goUserLink($id_user); ?>" ><?php echo $user['user_pseudo']; ?></a>
+
+						<p><?php echo (!empty($user['country'])) ? $user['country'] : "pays non renseigné"; ?></p>
+						<p>Score :<?php echo $user['score']; ?></p>
 
 
-					<?php
-						$dateCreated = $user['dateCreated'];
-						$date = "membre depuis ".getBetweenDate($dateCreated, "NOW");
-					?>
-					<p><?php echo $date; ?></p>
+						<?php
+							// date
+							$dateCreated = $user['dateCreated'];
+							$date = "membre depuis ".getBetweenDate($dateCreated);
+						?>
+						<p><?php echo $date; ?></p>
 
-					<p><?php echo $user['country']; ?></p>
-					<p>Score :<?php echo $user['score']; ?></p>
-					<p>Questions :<?php echo $user['TotalQuestions']; ?></p>
-					<p>Score :<?php echo $user['TotalAnswers']; ?></p>
+
+						<span>
+							<p>Questions : <?php echo $user['TotalQuestions']; ?></p>
+							<p>Réponses : <?php echo $user['TotalAnswers']; ?></p>
+						</span>
+					</div>
 				</div>
 
 				<?php endforeach; ?>	

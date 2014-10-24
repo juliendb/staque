@@ -28,16 +28,16 @@
 				<div id="sign">
 					<form id="search">
 						<input type="text" value="">
-						<div></div>
+						<input type="submit" value="">
 					</form>
 
 					<?php if (!$connect): ?>
 
-						<a id="signup" href="<?php echo $link.'signup'; ?>">s'inscrire</a>
+						<a href="<?php echo $link.'signup'; ?>">s'inscrire</a>
 
 						
 						<div class="pictohead"></div> 
-						<a id="connect" href="<?php echo $link.'login'; ?>">se connecter</a>
+						<a href="<?php echo $link.'login'; ?>">se connecter</a>
 					<?php endif; ?>
 
 					<?php if ($connect): ?>
@@ -65,7 +65,7 @@
 				<nav id="menu">
 					<a href="<?php echo $link.'questionsHome'; ?>">Questions</a>
 					<a href="<?php echo $link.'usersHome'; ?>">Utilisateurs</a>
-					<a href="">Sans réponses</a>
+					<a href="<?php echo $link.'questionsHome&no_answers=now'; ?>">Sans réponses</a>
 				</nav>
 				
 			</div>	

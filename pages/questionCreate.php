@@ -79,12 +79,10 @@
 		<form id="createQuestion" method="POST" novalidate>
 			
 			<div class="form-group">
-				<label for="title">Entrez le nom de votre question</label>
-				<input type="text" name="title" id="title" value="<?php echo $title; ?>" />
+				<input type="text" name="title" id="title" value="<?php echo $title; ?>" placeHolder="Entrer le titre de votre question"/>
 			</div>
 
 			<div class="form-group">
-				<label for="content">Saisissez le contenu de votre question</label>
 				<textarea name="content" id="contentEdit" rows="10" cols="40">
 					<?php echo $content; ?>
 				</textarea>
@@ -97,8 +95,7 @@
 					for($i=0; $i<$numb_tags; $i++):
 				?>
 					<div>
-						<p><?php echo "tag ".($i+1); ?></p>
-						<input type="text" name="<?php echo ('tag'.$i); ?>" value="<?php echo (!empty($tags[$i]) ) ? $tags[$i] : ""; ?>">
+						<input type="text" name="<?php echo ('tag'.$i); ?>" placeHolder="Séléctioner le tag <?php echo ($i+1); ?>" value="<?php echo (!empty($tags[$i]) ) ? $tags[$i] : ""; ?>">
 					</div>
 
 				<?php endfor; ?>

@@ -69,7 +69,7 @@
 			?>
 
 				<div class="tags_questions">
-					<p><?php echo $tag["tag_name"]; ?></p>
+					<a href="<?php echo 'index.php?page=home&tag='.$tag['id_tag']; ?>"><?php echo $tag["tag_name"]; ?></a>
 				</div>
 
 			<?php endforeach; ?>
@@ -79,12 +79,9 @@
 			<div id="userDetail">
 				<p><?php echo $date; ?></p>
 				<div>
-					<a href="<?php echo $link_adress; ?>">
-						<img src="<?php echo $question["img_profile"]; ?>">
-					</a>
-					<a class="user" href="<?php echo $link_adress; ?>">
-						<?php echo $question["user_pseudo"]; ?>
-					</a>
+					<a href="<?php echo $link_adress; ?>"><img width="40px" height="40px" src="<?php echo $question["img_profile"]; ?>"></a>
+					<a class="user" href="<?php echo $link_adress; ?>"><?php echo $question["user_pseudo"]; ?></a>
+
 					<p><?php echo $question["score"]; ?></p>
 				</div>
 			</div>
@@ -151,7 +148,7 @@
 		</div>
 	</section>
 
-
+	<h1> Telles sont les réponses</h1>	
 		
 		<?php 
 
@@ -173,8 +170,10 @@
 			}
 
 		?>
+			
 
-			<section id="detailReponses">	
+			<section id="detailReponses">
+
 				<div class="vote">
 					
 					<?php
@@ -182,9 +181,9 @@
 						$link = "id_answer=".$answer["id_answer"]."&id_userAnswer=".$id_user;
 					?>
 
-					<a href="<?php echo "index.php?page=votes&".$link."&vote_type=1"; ?>">+</a>
+					<a class="plus" href="<?php echo "index.php?page=votes&".$link."&vote_type=1"; ?>">+</a>
 					<p><?php echo calculVote($answer["id_answer"]); ?></p>
-					<a href="<?php echo "index.php?page=votes&".$link."&vote_type=0"; ?>">-</a>
+					<a class="moins" href="<?php echo "index.php?page=votes&".$link."&vote_type=0"; ?>">-</a>
 				</div>
 
 				<p><?php echo $answer["content"]; ?></p>
@@ -193,12 +192,9 @@
 					<p><?php echo $date; ?></p>
 
 					<div>
-						<a href="<?php echo $link_adress; ?>">
-							<img src="<?php echo $answer["img_profile"]; ?>">
-						</a>
-						<a class="user" href="<?php echo $link_adress; ?>">
-							<?php echo $answer["user_pseudo"]; ?>
-						</a>
+						<a href="<?php echo $link_adress; ?>"><img width="40px" height="40px" src="<?php echo $answer["img_profile"]; ?>"></a>
+						<a class="user" href="<?php echo $link_adress; ?>"><?php echo $answer["user_pseudo"]; ?></a>
+
 						<p><?php echo $answer["score"]; ?></p>
 					</div>
 				</div>
